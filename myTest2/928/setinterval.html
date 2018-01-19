@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function interval(fn, time) {
+				var cancle, timer, args = [].slice.call(arguments, 2);
+				(function wrapper() {
+					if(cancle) {
+						if(timer) clearTimeout(timer);
+						args = null
+					}else{
+						fn.apply(window, args);
+						timer = setTimeout(arguments.callee, time, args);
+					}
+
+				})();
+				
+				return function(){
+					cancle = true
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var p1 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					reject('reject p1')
+					resolve('resolve p1')
+				},2000)
+			});
+			var p2 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					reject('reject p2')
+				},1000)
+			})
+			
+			var pl = Promise.all([p1,p2]).then(function(parmas){
+				console.log(parmas)
+			}).catch(function(params){
+				console.log(params)
+			})
+		</script>
+	</body>
+</html>

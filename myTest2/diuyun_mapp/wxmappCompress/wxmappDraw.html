@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#board {
+				background-color: deepskyblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<pre>
+			img 	规定要使用的图像、画布或视频。
+			sx 	可选。开始剪切的 x 坐标位置。
+			sy 	可选。开始剪切的 y 坐标位置。
+			swidth 	可选。被剪切图像的宽度。
+			sheight 	可选。被剪切图像的高度。
+			x 	在画布上放置图像的 x 坐标位置。
+			y 	在画布上放置图像的 y 坐标位置。
+			width 	可选。要使用的图像的宽度。（伸展或缩小图像）
+			height 	可选。要使用的图像的高度。（伸展或缩小图像）
+		</pre>
+		<input type="file" name="input" id="input" value="" />
+		<canvas id="board" width="" height=""></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById('board');
+			var context = canvas.getContext('2d');
+			var ipt = document.getElementById('input');
+			var cf;
+			ipt.addEventListener('change', function(ev) {
+				var img = cf = ipt.files[0];
+				draw2(img);
+			})
+
+			function draw2(f) {
+				var reader = new FileReader(),
+					img = new Image();
+				img.onload = function() {
+					var targetWidth = 1000,
+						targetHeight = 1000;
+					canvas.width = targetWidth;
+					canvas.height = targetHeight;
+					context.clearRect(0, 0, targetWidth, targetHeight);
+					//五个参数时：param1：img；param2,param3:canvas开始绘制的x，y坐标；param4，param5：（期望）绘制出的图片的宽高；
+					//					context.drawImage(img, 0, 0, 200, 100);
+					context.drawImage(img, 0, 0, 1024, 768, 0, 0, 1024, 768);
+
+					// canvas转为blob并上传
+					//					canvas.toBlob(success, f.type || 'image/png')
+				}
+				reader.onprogress = function(ev) {
+					console.log(ev);
+					console.log(reader.readyState);
+				}
+				reader.onload = function(res) {
+					img.src = res.target.result;
+				}
+				reader.readAsDataURL(f);
+			}
+
+			function draw(f) {
+				console.log(f);
+				// 压缩图片需要的一些元素和对象
+				var reader = new FileReader(),
+					img = new Image();
+
+				// 选择的文件对象
+				var file = null;
+
+				// base64地址图片加载完毕后
+				img.onload = function() {
+					// 图片原始尺寸
+					var originWidth = this.width;
+					var originHeight = this.height;
+					// 最大尺寸限制
+					var maxWidth = 120,
+						maxHeight = 120;
+					// 目标尺寸
+					var targetWidth = originWidth,
+						targetHeight = originHeight;
+					// 图片尺寸超过400x400的限制
+					if(originWidth > maxWidth || originHeight > maxHeight) {
+						if(originWidth / originHeight > maxWidth / maxHeight) {
+							// 更宽，按照宽度限定尺寸
+							targetWidth = maxWidth;
+							targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+						} else {
+							targetHeight = maxHeight;
+							targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+						}
+					}
+
+					// canvas对图片进行缩放
+					canvas.width = targetWidth;
+					canvas.height = targetHeight;
+					// 清除画布
+					context.clearRect(0, 0, targetWidth, targetHeight);
+					// 图片压缩
+					context.drawImage(img, 0, 0, targetWidth, targetHeight);
+					// canvas转为blob并上传
+					//					canvas.toBlob(success, f.type || 'image/png')
+				}
+				reader.onprogress = function(ev) {
+					console.log(ev);
+					console.log(reader.readyState);
+				}
+				reader.onload = function(res) {
+					img.src = res.target.result;
+				}
+				reader.readAsDataURL(f);
+			}
+
+			function down() {
+				var ret = canvas.toBlob(function(res) {
+					var a = document.createElement('a');
+					a.innerText = 'download';
+					a.download = 'phone' + Math.random().toString(16).substr(2) + '.png';
+					a.href = URL.createObjectURL(res);
+					document.body.append(a);
+				});
+			}
+		</script>
+	</body>
+
+</html>

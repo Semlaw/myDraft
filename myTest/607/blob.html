@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<a download="data.txt" id="getData">下载</a>
+		<script type="text/javascript">
+			
+
+			var someTxt = 'Hello world!';
+			var blob = new Blob([someTxt], {
+				type: 'text/html,charset=UTF-8'
+			});
+			window.URL = window.URL || window.webkitURL;
+			document.querySelector("#getData").href = URL.createObjectURL(blob);
+		</script>
+	</body>
+
+</html>

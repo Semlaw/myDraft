@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input{
+				display: inline;
+			}
+		</style>
+	</head>
+	<body>
+		<span>span</span>
+		<img src="" alt="" />
+		<input type="text" />
+		<ul>
+			<li class="item user">1</li>
+			<li class="item user">2</li>
+			<li class="item">3</li>
+			<li class="item user">4</li>
+			<li class="item">5</li>
+			<li class="item">6</li>
+			<li class="item user">7</li>
+			<li class="item">8</li>
+		</ul>
+		<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var ul = document.querySelector('ul')
+			
+			ul.onclick = function(ev){
+				console.dir(ev.target)
+				console.dir(ev.currentTarget)
+				console.log(ev.target == ev.currentTarget)
+				console.dir(ev.target.classList)
+				if(ev.target.classList){
+					var flag = false
+					for(let val of ev.target.classList){
+						if(val=="user"){
+							flag = true
+							break;
+							console.log()
+						}
+					}
+					if(flag){
+						alert(ev.target.innerHTML)
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

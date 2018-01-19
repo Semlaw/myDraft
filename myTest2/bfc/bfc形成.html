@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<h3>BFC形成条件</h3>
+		<p>BFC是一块渲染区域，那这块渲染区域到底在哪，它又是有多大，这些由生成BFC的元素决定，CSS2.1中规定满足下列CSS声明之一的元素便会生成BFC。</p>
+		<ul>
+			<li>根元素</li>
+			<li>float的值不为none</li>
+			<li>overflow的值不为visible</li>
+			<li>display的值为inline-block、table-cell、table-caption</li>
+		</ul>
+		<blockquote>
+			<p>display：table也认为可以生成BFC，其实这里的主要原因在于Table会默认生成一个匿名的table-cell，正是这个匿名的table-cell生成了BFC</p>
+		</blockquote>
+		<ul>
+			<li>position的值为absolute或fixed</li>
+		</ul>
+		<h3>BFC的约束</h3>
+		<ul>
+			<li>内部的Box会在垂直方向上一个接一个的放置</li>
+			<li>垂直方向上的距离由margin决定。（完整的说法是：属于同一个BFC的两个相邻Box的margin会发生重叠（塌陷），与方向无关。）</li>
+			<li>每个元素的左外边距与包含块的左边界相接触（从左向右），即使浮动元素也是如此。（这说明BFC中子元素不会超出他的包含块，而position为absolute的元素可以超出他的包含块边界）</li>
+			<li>BFC的区域不会与float的元素区域重叠</li>
+			<li>计算BFC的高度时，浮动子元素也参与计算</li>
+			<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面元素，反之亦然</li>
+		</ul>
+		<h4>常见规则</h4>
+		<ul>
+			<li>Block元素会扩展到与父元素同宽，所以block元素会垂直排列</li>
+			<li>垂直方向上的两个相邻DIV的margin会重叠，而水平方向不会(此规则并不完全正确)</li>
+			<li>浮动元素会尽量接近往左上方（或右上方）</li>
+			<li>为父元素设置overflow：hidden或浮动父元素，则会包含浮动元素</li>
+		</ul>
+		<script type="text/javascript">
+		</script>
+	</body>
+
+</html>

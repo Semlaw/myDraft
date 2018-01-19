@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,height=device-height">
+		<title>曲线折线图</title>
+		<style>
+			::-webkit-scrollbar {
+				display: none;
+			}
+			
+			html,
+			body {
+				overflow: hidden;
+				height: 100%;
+			}
+			#mountNode{
+				/*width: 500px;
+				height: 300px;
+				background-color: deepskyblue;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="mountNode"></div>
+		<script>
+			/*Fixing iframe window.innerHeight 0 issue in Safari*/
+			document.body.clientHeight;
+		</script>
+		<script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.0/g2.min.js"></script>
+		<script src="https://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
+		<script>
+			const data = [{
+					month: 'Jan',
+					'待发货': 7.0,
+					'已发货': 3.9
+				},
+				{
+					month: 'Feb',
+					'待发货': 6.9,
+					'已发货': 4.2
+				},
+				{
+					month: 'Mar',
+					'待发货': 9.5,
+					'已发货': 5.7
+				},
+				{
+					month: 'Apr',
+					'待发货': 14.5,
+					'已发货': 8.5
+				}
+			];
+			const ds = new DataSet();
+			
+			const dv = ds.createView().source(data);
+			dv.transform({
+				type: 'fold',
+				fields: ['待发货', '已发货'], // 展开字段集
+				key: 'city', // key字段
+				value: 'temperature', // value字段
+			});
+			console.log(dv)
+			const chart = new G2.Chart({
+				container: 'mountNode',
+				forceFit: true,
+				height: window.innerHeight
+			});
+			chart.source(dv, {
+				month: {
+					range: [0, 1]
+				}
+			});
+			chart.tooltip({
+				crosshairs: {
+					type: 'line'
+				}
+			});
+			chart.axis('temperature', {
+				label: {
+					formatter: val => {
+						return val;
+					}
+				}
+			});
+			chart.line().position('month*temperature').color('city').shape('smooth');
+			chart.point().position('month*temperature').color('city').size(4).shape('circle').style({
+				stroke: '#fff',
+				lineWidth: 1
+			});
+			chart.render();
+		</script>
+	</body>
+
+</html>

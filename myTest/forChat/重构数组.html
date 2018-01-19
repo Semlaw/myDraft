@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			Array.prototype.baoremove = function(dx) {
+				if(isNaN(dx) || dx > this.length) {
+					return false;
+				}
+				this.splice(dx, 1);
+			}
+			b = ['1', '2', '3', '4', '5'];
+			alert("elements: " + b + "\nLength: " + b.length);
+			b.baoremove(1); //删除下标为1的元素 
+			alert("elements: " + b + "\nLength: " + b.length);
+		</script>
+	</body>
+
+</html>

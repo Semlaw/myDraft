@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var one = 60*60*24*1000;
+			function compile(a,b){
+				var n = Math.floor(a/one);
+				var m = Math.floor(b/one);
+				return [n,m];
+			}
+			var o = new Date();
+			var d = o.getTime();
+			var o2 = new Date(d + 60*60*8*1000);
+			var d2 = o2.getTime();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<div>{{a}}</div>
+			<div>{{a.age}}</div>
+			<div>{{arr}}</div>
+			<div v-bind='arr'></div>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var data = {
+				a: {
+					age: 12
+				},
+				arr: [1, 2, 3]
+			}
+
+			// 该对象被加入到一个 Vue 实例中
+			var vm = new Vue({
+				el: '#app',
+				data: data
+			})
+			vm.$watch('a', function() {
+				console.dir(arguments)
+			})
+		</script>
+	</body>
+
+</html>

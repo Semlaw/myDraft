@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				border-left-width: 0;
+				border-width: 11px;
+				width: 0;
+				height: 0;
+				border-color: transparent;
+				border-style: solid;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			function fn() {
+				return 20;
+			}
+
+			fn.toString = function() {
+				return 1;
+			}
+
+//			fn.valueOf = function() {
+//				return function(){
+//					
+//				};
+//			}
+			console.log(new Boolean(false))
+			console.log(fn.valueOf())
+
+		
+		</script>
+	</body>
+
+</html>

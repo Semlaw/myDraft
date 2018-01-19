@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="http://51zan.oss-cn-shanghai.aliyuncs.com/content/20170116/cd590d9c2cac46a3a5ecae27906786a1.jpg" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var xhr = new XMLHttpRequest()
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState ==4){
+					console.dir(xhr.responseText)
+				}
+			}
+			xhr.open("GET",'http://51zan.oss-cn-shanghai.aliyuncs.com/content/20170116/cd590d9c2cac46a3a5ecae27906786a1.jpg')
+			xhr.setRequestHeader('Access-Control-Allow-Origin','*')
+			xhr.send()
+		</script>
+	</body>
+</html>

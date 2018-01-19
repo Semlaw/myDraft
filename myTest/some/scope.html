@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<h3>{{title}}</h3>
+		<input type="text" ng-model="person.name" />
+		<div ng-switch on="person.name">
+			<p ng-switch-default>And the winner is</p>
+			<h1  ng-repeat="item in obj" ng-switch-when="{{item}}">{{console.log(item)}}</h1>
+		</div>
+		<div ng-repeat="item in arr">{{$index}},{{$first}},{{$last}},{{$middle}},{{$even}},{{item}}</div>
+		<div ng-repeat="(key ,item) in obj">{{temp}},{{$index}},{{$first}},{{$last}},{{$middle}},{{$even}},{{item}}
+			<p>{{key}}</p>
+		</div>
+		<script type="text/javascript">
+			angular.module('myApp',[]).controller('myCtrl',function($scope){
+				$scope.arr = ['11','22','33','44']
+				$scope.obj = {
+					name:"objs",
+					age:99
+				}
+				$scope.title = 'this is a title '
+				setTimeout(function(){
+					$scope.$apply(function(){
+						$scope.title = 'change title'
+					})
+				},1000)
+			})
+		</script>
+	</body>
+
+</html>

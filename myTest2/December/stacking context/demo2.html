@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>定位元素和层叠上下文元素</title>
+		<style type="text/css">
+			img{
+				width: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<img src="stacking order.png" style="position:relative;left: 100px;">
+			<img src="stacking order2.png" style="transform:scale(1);">
+		</div>
+		<div>
+			<img src="stacking order2.png" style="transform:scale(1);">
+			<img src="stacking order.png" style="position:relative;left: -100px;">
+		</div>
+		<pre>
+元素一旦成为定位元素，其z-index就会自动生效，此时其z-index就是默认的auto，也就是0级别，根据层叠顺序表，就会覆盖inline或block或float元素。
+而不支持z-index的层叠上下文元素天然z-index:auto级别，也就意味着，层叠上下文元素和定位元素是一个层叠顺序的，于是当他们发生层叠的时候，遵循的是“后来居上”准则。
+		</pre>
+	</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.clearfix:after {
+				display: table;
+				content: " ";
+			}
+			.clearfix:before {
+				display: table;
+				content: " ";
+			}
+			.clearfix:after {
+				clear: both;
+			}
+			
+			.box {
+				background-color: red;
+			}
+			
+			.box>div {
+				float: left;
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				margin-right: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box clearfix">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+		</div>
+	</body>
+
+</html>
