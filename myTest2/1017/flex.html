@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.goods-infos-area {
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.goods-swiper-img {
+				width: 750px;
+			}
+			
+			.goods-price-infos {
+				padding: 16px;
+				display: flex;
+			}
+			
+			.price_n {
+				position: relative;
+				font-size: 46px;
+				padding-left: 25px;
+				margin-right: 10px;
+			}
+			
+			.price_n::after {
+				position: absolute;
+				left: 0;
+				content: "￥";
+				font-size: 22px;
+			}
+			
+			.price_p {
+				font-size: 22px;
+				text-decoration: line-through;
+				color: #cecece;
+			}
+			
+			.price-tags {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+			}
+			
+			.price-tag {
+				padding: 0 6px;
+				font-size: 22px;
+				background-color: #FFCCFF;
+				color: #FF6699;
+				flex-grow: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class='goods-price-infos'>
+			<div class='price_n'>121249.9</div>
+			<div class='price-tags'>
+				<span class='price_p'>￥1184.29</span>
+				<div>
+					<span class='price-tag'>活动价</text>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

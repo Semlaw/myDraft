@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../ngDialog-0.4.0/css/ngDialog.min.css" />
+			<link rel="stylesheet" type="text/css" href="../ngDialog-0.4.0/css/ngDialog-theme-default.min.css" />
+			<!--<link rel="stylesheet" type="text/css" href="../ngDialog-0.4.0/css/ngDialog-theme-plain.min.css" />-->
+			<!--<link rel="stylesheet" type="text/css" href="../ngDialog-0.4.0/css/ngDialog-custom-width.css" />-->
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../ngDialog-0.4.0/js/ngDialog.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<!--<body ng-controller="Ctrl">
+		<button ng-click="clickToOpen()">btn</button>
+		<script type="text/javascript">
+			var app = angular.module('app', ['ngDialog']);
+
+			app.controller('Ctrl', function($scope, ngDialog) {
+				$scope.clickToOpen = function() {
+					ngDialog.open({
+						template: '<p>my template</p>',
+						plain: true
+					});
+				};
+			});
+		</script>
+		<script type="text/ng-template" id="templateId">
+			<h1>Template heading</h1>
+			<p>Content goes here</p>
+		</script>
+	</body>-->
+
+	<body ng-controller="indexCtrl">
+		<input type="button" value="alert" ng-click="clickToOpen()">
+
+		<script>
+			angular.module('app', ['ngDialog'])
+				.controller('indexCtrl', function($scope, ngDialog) {
+
+					$scope.clickToOpen = function() {
+						ngDialog.open({
+							template: 'templateId.html',
+							className: 'ngdialog-theme-default ngdialog-theme-dadao',
+							controller: function($scope) {
+								$scope.show = function() {
+									console.log(6688688);
+									$scope.closeThisDialog(); //关闭弹窗
+								}
+							}
+						});
+					};
+
+				})
+		</script>
+
+		<script type="text/ng-template" id="templateId.html">
+			<div class="ui-dialog-title">
+				标题
+			</div>
+			<div class="ui-dialog-content">
+
+				<button type="submit" class="btn btn-primary" ng-click="show()">
+            保存
+        </button>
+				<button type="button" class="btn btn-primary" ng-click="closeThisDialog()">
+            取消
+        </button>
+
+			</div>
+		</script>
+	</body>
+
+</html>

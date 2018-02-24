@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var temp = /<(?:img|IMG).*?text="(.*?)".*?>/
+			var str = `jQuery17105346139455613277_1513219253217&&jQuery17105346139455613277_1513219253217({"message":"未登录","success":false,"body":null})`;
+			
+			function extract(raw){
+				var reg = /.*?\((.*?)\).*?/;
+				return str.replace(reg,'$1');
+			}
+			function extract2(raw){
+				var p = raw.indexOf('(');
+				var r = raw.indexOf(')');
+				return raw.substring(p+1,r);
+			}
+		</script>
+	</body>
+</html>

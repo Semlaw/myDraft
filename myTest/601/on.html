@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+			hello
+		</div>
+		<script type="text/javascript">
+			$("body").on('click',"div",{name:123},function(ev,data){
+				console.log($(this).text())
+				console.dir(ev)
+				console.dir(data)
+			})
+			$("body").on('click',"div",{name:123},function(ev,data){
+				console.log($(this).text())
+				console.dir(ev)
+				console.dir(data)
+			})
+		</script>
+	</body>
+</html>

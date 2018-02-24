@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.row-right-chevron {
+				position: relative;
+				padding-right: 40rpx !important;
+				transform: all .3s;
+			}
+			
+			.row-right-chevron:after {
+				content: " ";
+				display: inline-block;
+				height: 6px;
+				width: 6px;
+				border-width: 2px 2px 0 0;
+				border-color: #c8c8cd;
+				border-style: solid;
+				/*-webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+				transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);*/
+				/*transform: rotate(135deg);*/
+				position: relative;
+				top: -2px;
+				position: absolute;
+				top: 50%;
+				margin-top: -4px;
+				right: 10rpx;
+			}
+			.chevron-right.active:after{
+				transform:rotate(135deg);
+			}
+			.chevron-right:after{
+				transition:transform .3s;
+				transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="row-right-chevron chevron-right">2323</div>
+	</body>
+
+</html>

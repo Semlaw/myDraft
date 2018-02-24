@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {}
+			obj.name = 'inner'
+			var name = 'outer'
+			var foo,foo2;
+			obj.func = function(){
+				setTimeout(function(){
+					console.log(this)
+				})
+			}
+			obj.func1 = function(){
+				foo = ()=>console.log(this)
+				setTimeout(foo)
+			}
+			
+			function temp(){
+				return function(){
+					foo2 =()=>console.dir(this)
+				}
+			} 
+			
+			obj.func()
+			obj.func1()
+			foo()
+			temp()()
+			foo2()
+		</script>
+	</body>
+</html>

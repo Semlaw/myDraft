@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>形成层叠上下文的元素层叠上下文顺序大于inline-block元素</title>
+		<style type="text/css">
+			.box {
+				transform:scale(1) ;
+			}
+			
+			.item {
+				width: 300px;
+				height: 200px;
+			}
+			
+			.item1 {
+				background-color: deepskyblue;
+				display: inline-block;
+				margin-top: -100px;
+			}
+			
+			.item2 {
+				background-color: red;
+				opacity: .9;
+				transform: scale(1.1);
+				filter: blur(4px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="item item2"></div>
+			<div class="item item1"></div>
+		</div>
+	</body>
+
+</html>

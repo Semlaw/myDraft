@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div contenteditable="true" id="div">这是一个 div</div>
+		<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var name = 'pikachu'
+			$('#div').prop('asrc',{name})
+			$("#div").attr('bsrc',{name})
+			console.dir($('#div').prop('asrc'))
+			console.dir($('#div').prop('asrc'))
+			var div = document.getElementById('div')
+			console.log(div.getAttribute('asrc'))
+			console.log($('#div').prop('contenteditable'))
+			console.log($('#div').attr('contenteditable'))
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<a href="https://wx2.qq.comhttps://open.weixin.qq.com/connect/qrconnect?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect"></a>
+
+		<script type="text/javascript">
+			var obj = new WxLogin({
+
+				id: "login_box",
+
+				appid: "wx775ef209ffe71c95",
+
+				scope: "",
+
+				redirect_uri: "",
+
+				state: "",
+
+				style: "",
+
+				href: ""
+
+			});
+			var path = 'http://www.xxxx.com'; //登录后回调的地址
+			var appid = 'xxxxxxxxx'; //注册申请的appid
+			window.open('https://open.weixin.qq.com/connect/qrconnect?appid=' + appid + '&redirect_uri=path&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect'); //代开二维码页面，扫码成功后会回调到path地址
+			//然后可以通过地址栏得到code参数的值，可以通过code值来根据需要进行进一步的操作
+		</script>
+	</body>
+
+</html>

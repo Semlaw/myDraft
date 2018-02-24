@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="GBK">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var data = '百度&%$#@baidu';
+			console.log(encodeURI(data));
+			// %E9%90%A7%E6%83%A7%E5%AE%B3&%25$#@baidu
+			console.log(encodeURIComponent(data));
+			// %E9%90%A7%E6%83%A7%E5%AE%B3%26%25%24%23%40baidu
+		</script>
+	</body>
+
+</html>

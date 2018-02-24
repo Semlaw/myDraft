@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,li{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				display: inline-block;
+				background-color: #CECECE;
+			}
+			.list{
+				/*display: none;*/
+				transition: all .4s linear;
+				max-height: 0;
+				opacity: 0;
+			}
+			.box:hover .list{
+				/*display: inline-block;*/
+				opacity: 1;
+				max-height: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<span>水果</span>
+			<ul class="list">
+				<li>苹果</li>
+				<li>梨子</li>
+				<li>菠萝</li>
+				<li>香蕉</li>
+				<li>荔枝</li>
+			</ul>
+		</div>
+	</body>
+</html>

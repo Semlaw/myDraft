@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.sku-content-wrapper {
+				width: 100%;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				max-height: 75%;
+				z-index: 101;
+				transition: all 0.4s ease-in-out;
+				overflow: hidden;
+				padding-top: 200px;
+				box-sizing: border-box;
+				transform: translateY(100%);
+			}
+			
+			.sku-content-wrapper.active {
+				transform: translateY(0);
+			}
+			
+			.sku-content {
+				background-color: #fff;
+			}
+			
+			.sku-content .goods {
+				display: flex;
+				padding: 28px 0;
+				position: relative;
+			}
+			
+			.sku-content .goods-img {
+				position: relative;
+				margin-left: 30px;
+				height: 140px;
+				width: 200px;
+			}
+			
+			.img--inner {
+				width: 200px;
+				/* height: 200px; */
+				position: absolute;
+				bottom: 0;
+			}
+			
+			.img--inner img {
+				display: block;
+				box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+				width: 100%;
+				max-height: 400px;
+			}
+			
+			.sku-content .goods-cont {
+				position: relative;
+				margin: 0 30px;
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: flex-start;
+			}
+			
+			.sku-content .goods-cont--price {
+				display: flex;
+				color: #333;
+			}
+			
+			.goods-cont--price-unit {
+				font-size: 24px;
+				margin-top: 6px;
+			}
+			
+			.goods-cont--stock {
+				color: #333;
+				font-size: 24px;
+			}
+			
+			.goods-cont--addon {
+				font-size: 24px;
+			}
+			
+			.goods .goods-close {
+				position: absolute;
+				right: 40px;
+				top: 30px;
+			}
+			
+			.sku-content--scroll {
+				overflow: auto;
+				max-height: 700px;
+			}
+			
+			.goods-prop-area {
+				padding: 0 30px;
+			}
+			
+			.goods-prop-rows {
+				margin-top: 15px;
+			}
+			
+			.prop-rows--title {
+				font-size: 24px;
+				color: #5e5e5e;
+			}
+			
+			.prop-rows--content {
+				margin-top: 10px;
+			}
+			
+			.prop-item {
+				display: inline-block;
+				padding: 0 30px;
+				border: 1px solid #bbb;
+				border-radius: 6px;
+				margin-right: 20px;
+				margin-bottom: 20px;
+				font-size: 24px;
+				cursor: pointer;
+				color: #5e5e5e;
+				white-space: nowrap;
+				text-align: center;
+				line-height: 52px;
+			}
+			
+			.prop-item.selected {
+				border-color: rgb(237, 69, 102);
+				color: rgb(237, 69, 102);
+			}
+		</style>
+	</head>
+
+	<body>
+		<view class='goods-img'>
+			<view class='img--inner'>
+				<image src='https://s3.mogucdn.com/p2/170209/192193945_4ihl4j100e4cafc88k5k0ib2hgibk_800x800.jpg_128x999.webp'></image>
+			</view>
+		</view>
+	</body>
+
+</html>

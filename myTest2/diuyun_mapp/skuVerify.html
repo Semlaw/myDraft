@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var cartesianProductOf = function() {
+				return Array.prototype.reduce.call(arguments, function(a, b) {
+					var ret = [];
+					a.forEach(function(a) {
+						b.forEach(function(b) {
+							ret.push(a.concat([b]));
+						});
+					});
+					return ret;
+				}, [
+					[]
+				]);
+			}
+			var initSku = function() {
+				var propArr = propList.map(function(item) {
+					return item.value;
+				})
+				var skuByProp = cartesianProductOf.apply(null, propArr);
+				var skuModel = [];
+				skuByProp.forEach(function(item) {
+					skuModel.push({
+						prop: item,
+						stock: 0
+					});
+				});
+				//原始库存数据迁移；
+				var right = ori_propList.length===propList.length&&propList.every(function(item,idx){
+					return ori_propList[idx]&&ori_propList[idx].name===item.name;
+				});
+				if(right){
+					ori_skuModel.forEach(function(ori){
+						var target = skuModel.find(function(item){
+							return ori.prop.toString()===item.prop.toString();
+						});
+						target.stock = ori.stock;
+					})
+				}else{
+					//直接覆盖原数据；
+				}
+				return skuModel;
+			}
+
+			var ori_propList = [{
+				"name": "color",
+				"temp": "red，blue",
+				"value": ["red", "blue"]
+			}, {
+				"name": "size",
+				"temp": "s，m",
+				"value": ["s", "m"]
+			}];
+
+			var ori_skuModel = [{
+				"prop": ["red", "s"],
+				"stock": 333
+			}, {
+				"prop": ["red", "m"],
+				"stock": 111
+			}, {
+				"prop": ["blue", "s"],
+				"stock": 222
+			}, {
+				"prop": ["blue", "m"],
+				"stock": 0
+			}];
+
+			var propList = [{
+				"name": "color",
+				"temp": "red，blue",
+				"value": ["red", "blue"]
+			}, {
+				"name": "size",
+				"temp": "s，m",
+				"value": ["s", "m","L"]
+			}];
+		</script>
+	</body>
+
+</html>

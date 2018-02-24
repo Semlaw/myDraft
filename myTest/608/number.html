@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="number" name="price" id='price' onkeyup="if( ! /^d*(?:.d{0,2})?$/.test(this.value)){alert('只能输入数字，小数点后只能保留两位');this.value='';}" />
+		<input min="1" max="200" onkeyup="fixNum(this)"  type="number" />
+		<script type="text/javascript">
+			function fixNum(that) {
+				console.log(that.value)
+				var regs = /^(?:[1-9][0-9](\.\d*)?|200(\.\d*)?$/
+				console.log(that.value.replace(,""))
+				that.value = that.value.replace(/^(?:[1-9][0-9](\.\d*)?|200(\.\d*)?$/,"")
+//				console.log(that.value)
+//				var val = Math.abs(that.value)
+//				val = val.toFixed(2)
+//				console.log(val)
+//				that.value = val
+			}
+		</script>
+	</body>
+
+</html>

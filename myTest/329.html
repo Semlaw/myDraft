@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select name="">
+			<option value="">123</option>
+		</select>
+		<script type="text/javascript">
+			function foo(){
+				var obj = {name:'Linux'}
+				return obj
+			}
+			var temp = new foo()
+			var obj1 = {name:'No1'}
+			var obj2 = new Object({name:'No2'})
+			var foo1 = function(){
+				console.log('this is foo1')
+			}
+			var foo2 = new Function("console.log('this is foo1')")
+			foo2()
+			console.dir(foo1)
+			console.dir(foo2)
+			console.dir(obj1)
+			console.dir(obj2)
+			console.dir(temp)
+		</script>
+	</body>
+</html>

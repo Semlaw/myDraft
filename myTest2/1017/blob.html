@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', "http://xinma.so/rest/xm/code/745.png", true);
+			xhr.responseType = 'blob';
+			xhr.onload = function(e) {
+				if(this.status == 200) {
+					var blob = this.response;
+					console.log(blob)
+					var img = document.createElement('img');
+					var URL = window.URL || window.webkitURL; //兼容处理
+					var objectUrl = URL.createObjectURL(blob);
+					img.onload = function(e) {
+						window.URL.revokeObjectURL(img.src); // 释放 url.
+					};
+					img.src = objectUrl;
+					document.body.appendChild(img);
+
+				}
+			};
+
+			xhr.send();
+			
+		</script>
+		<script type="text/javascript">
+			[{
+				title: "儿童益智积木玩具1-2周岁男孩子婴儿宝宝女孩3-6周岁拼装7-8-10岁",
+				money: "999",
+				url: "/images/home/item1.jpg",
+				tags[{
+					name: '便携'
+				}, {
+					name: '家居'
+				}, {
+					name: 'mini'
+				}, {
+					name: '可爱'
+				}, {
+					name: '加绒加厚'
+				}, {
+					name: '套头'
+				}],
+				money_p: "1899",
+				gid: "10010",
+				favNum: '1212'
+			}, {
+				title: "脱皮嫩白",
+				money: "18.5",
+				tags[{
+					name: '便携'
+				}, {
+					name: '家居'
+				}],
+				url: "/images/home/item1.jpg"
+			}, {
+				title: "马油保湿嫩滑补水",
+				money: "32.2",
+				url: "/images/home/item1.jpg",
+				tags[{
+					name: '便携'
+				}, {
+					name: '家居'
+				}, {
+					name: 'mini'
+				}, {
+					name: '可爱'
+				}, {
+					name: '加绒加厚'
+				}, {
+					name: '套头'
+				}],
+			}, {
+				title: "相宜草本",
+				money: "63.3",
+				url: "/images/home/item1.jpg",
+				favNum: '453453',
+				tags[{
+					name: '便携'
+				}],
+			}]
+		</script>
+	</body>
+
+</html>

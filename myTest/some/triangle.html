@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background: #666;
+				font: 14px/20px "Microsoft YaHei";
+				text-align: left;
+			}
+			
+			.entry {
+				position: relative;
+				margin-left: 20px;
+				margin-top: 20px;
+				width: 200px;
+				background: #fff;
+				padding: 10px;
+				/*设置圆角*/
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+			}
+			/*左三角*/
+			
+			.entry-trangle-left {
+				position: absolute;
+				bottom: 15px;
+				left: -10px;
+				width: 0;
+				height: 0;
+				border-top: 15px solid transparent;
+				border-bottom: 15px solid transparent;
+				border-right: 15px solid #fff;
+			}
+			/*右三角*/
+			
+			.entry-trangle-right {
+				position: absolute;
+				top: 15px;
+				right: -10px;
+				width: 0;
+				height: 0;
+				border-top: 15px solid transparent;
+				border-bottom: 15px solid transparent;
+				border-left: 15px solid #fff;
+			}
+			/*上三角*/
+			
+			.entry-trangle-top {
+				position: absolute;
+				top: -10px;
+				left: 20px;
+				width: 0;
+				height: 0;
+				border-left: 15px solid transparent;
+				border-right: 15px solid transparent;
+				border-bottom: 15px solid #fff;
+			}
+			/*下三角*/
+			
+			.entry-trangle-bottom {
+				position: absolute;
+				bottom: -10px;
+				left: 20px;
+				width: 0;
+				height: 0;
+				border-left: 15px solid transparent;
+				border-right: 15px solid transparent;
+				border-top: 15px solid #fff;
+			}
+			.my{
+				width: 0px;
+				height: 0px;
+				border: 10px solid transparent;
+				border-bottom-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="entry-trangle-left">
+			
+		</div>
+		<div class="entry-trangle-top"></div>
+		<div class="my">
+			
+		</div>
+		<script type="text/javascript">
+			console.dir(document.referrer)
+		</script>
+	</body>
+
+</html>

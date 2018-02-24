@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>费用报销单</title>
+        <style>
+            div{
+                width: 700px;
+                height: 400px;
+                /*background-color: orange;*/
+                margin: 50px auto;
+                padding: 30px;
+                box-shadow: 0px 0px 20px;
+            }
+            table{
+                margin: 0px auto;
+                border:1px solid red;
+                /*边框合并*/
+                border-collapse: collapse;
+            }
+            td{
+                padding:0px;
+                border:1px solid black;
+                font-size: 13px;
+                height: 30px;
+                text-align: center;
+            }
+            tr td:nth-child(1){
+                width: 180px;
+            }
+            tr td:nth-child(2){
+                width: 60px;
+            }
+            tr td:nth-child(3){
+                width: 60px;
+            }
+            tr td:nth-child(4){
+                width: 100px;
+            }
+            tr td:nth-child(5){
+                width: 110px;
+            }
+            #tr td{
+                width:90px;
+                border: 0px solid black;
+                border-right: 1px solid black;
+            }
+            #tr td:nth-child(6){
+                border-right: 0px solid black;
+            }
+            table table{
+                border: 0px solid black;
+            }
+            h2{
+                width:220;
+                margin: 0px auto;
+                border-bottom:1px solid black;
+            }
+            p span:nth-child(1){
+                position: relative;
+                left: 45px;
+            }
+            p span:nth-child(2){
+                float: right;
+            }
+            p{
+                font-size: 13px;
+                margin: 6px;
+            }
+            footer{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <table>
+                <caption>
+                    <h2>费&#x3000;用&#x3000;报&#x3000;销&#x3000;单</h2>
+                    <p>
+                        <span>报销日期　　　　年　　　月　　　日</span>
+                        <span> 附件　　　张</span>
+                    </p>
+                </caption>
+                <tr>
+                    <td>费用项目</td>
+                    <td>类别</td>
+                    <td>金额</td>
+                    <td rowspan="2">负责人（签章）</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">审&#x3000;查&#x3000;意&#x3000;见</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">报销人（签章）</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>￥&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5">核实金额（大写）　 佰　 拾　 万 　 仟　 佰　 拾 　 元　 角　 分　 ￥</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <table>
+                            <tr id="tr">
+                                <td>借 款 额</td>
+                                <td></td>
+                                <td>应退金额</td>
+                                <td></td>
+                                <td>应补金额</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <footer>
+                <p>审 核　　　　　　　　　　 　　　　　　　　　　 出 纳</p>
+            </footer>
+        </div>
+    </body>
+</html>

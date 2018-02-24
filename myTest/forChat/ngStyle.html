@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<img style="max-width: 300px;" src="u=1661498548,1802115548&fm=23&gp=0.jpg"/>
+		<p ng-bind-html="code"></p>
+		<p>{{obj.length | toDate}}</p>
+		<p>{{obj.length | toSeconds}}</p>
+		<button ng-click="setSrc()">btn</button>
+		<h1 ng-style="myObj">菜鸟教程</h1>
+		<h2 ng-style="{color:myObj.color,backgroundColor:'red',height:myObj.height + 'px'}">hello</h2>
+		<img ng-src="{{src}}" err-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1215645982,1659373920&fm=23&gp=0.jpg" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1215645982,1659373920&fm=23&gp=0.jpg" alt="" />
+		<script>
+			var app = angular.module("myApp", ['ngSanitize']);
+			app.controller("myCtrl", function($scope) {
+				$scope.myObj = {
+					"color": "blue",
+					"background-color": "coral",
+					"font-size": "60px",
+					"padding": "50px",
+					"height": "200"
+				}
+				$scope.src = ""
+				$scope.setSrc = function() {
+					$scope.src = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=38"
+				}
+				$scope.obj = {
+					length: 20000
+				}
+				$scope.code = "		<span>hello</span>"
+			});
+
+			app.filter("toSeconds", function() {
+				return function(input, opt) {
+					return Math.round(input / 60)
+				}
+			})
+			.filter("toDate", function() {
+				return function(input, opt) {
+					if(typeof input == "object") {
+						return input;
+					}
+					return new Date(input)
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

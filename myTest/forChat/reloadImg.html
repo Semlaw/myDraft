@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<img src="file:///E:/8_15.png" />
+		<img src="../img/avatar1.jpg" />
+		<script type="text/javascript">
+			setTimeout(function() {
+				$('img').each(function() {
+					this.src = this.src + '?time=' + new Date().getTime()
+				})
+			},3000)
+		</script>
+	</body>
+
+</html>

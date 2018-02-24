@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 500px;
+				height: 400px;
+				background-color: deepskyblue;
+				margin: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">a box </div>
+		<iframe src="https://wx2.qq.com/?&lang=zh_CN" width="" height=""></iframe>
+		<script type="text/javascript">
+			var box = document.getElementById('box')
+			var foo = function(){
+				console.dir(window.$)
+			}
+			window.onload = function() {
+				setTimeout(function(){
+					console.dir($)
+				},2000)
+				box.onmouseenter = function(ev) {
+					console.log('box focus')
+				}
+				box.onmouseleave = function() {
+					console.log("box blur")
+				}
+			}
+		</script>
+	</body>
+
+</html>

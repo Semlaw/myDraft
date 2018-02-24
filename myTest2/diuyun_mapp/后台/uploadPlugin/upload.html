@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传</title>
+	</head>
+	<body>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="upload.js" type="text/javascript" charset="utf-8"></script>
+		<input  type="file" accept="image/jpg,image/jpeg,image/png" />
+		<span class="btn">选择图片</span>
+		<span class="txt">选择text</span>
+		<script type="text/javascript">
+			$(".btn").initUpload({callback:undefined,dist:undefined,err:undefined,accept:'image/jpg,image/jpeg,image/png'})
+			$('.txt').initUpload({accept:'text/plain'})
+		</script>
+	</body>
+</html>

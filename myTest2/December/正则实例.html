@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div text='{"name":"pikachu"}'>
+			<span text='{"hello":"haha"}'></span>
+		</div>
+		<script type="text/javascript">
+			//1提取jsonp 响应的json；
+			var str = '  jquerysdfsfsdfsfsdf&&jquery314234({"name":12,"age":333})   ';
+			var ret = str.replace(/[^(]+\(([^()]+)\)[^\)]*/, '$1'); //{"name":12,"age":333}
+			//将img标签换成标签内特定文字；
+			var reg1 = /<(?:img|IMG).*?text="(.*?)_web".*?>/g;
+			var str1 = 'start<img class="qqemoji qqemoji36" text="[衰]_web" src="/zh_CN/htmledition/v2/images/spacer.gif">' +
+				'hello world <br>' +
+				'<img class="qqemoji qqemoji69" text="[闪电]_web" src="/zh_CN/htmledition/v2/images/spacer.gif">end';
+			var ret1 = str1.replace(reg1, '$1') //start[衰]hello world <br>[闪电]end;
+
+			var str2 = 'start<img class="qqemoji qqemoji36" text="[衰]" src="/zh_CN/htmledition/v2/images/spacer.gif">' +
+				'hello world <br>' +
+				'<img class="qqemoji qqemoji69" text="[闪电]_web" src="/zh_CN/htmledition/v2/images/spacer.gif">end';
+			var reg2 = /<(?:img|IMG).*?text="(.*?)".*?>/g;
+			var ret2 = str2.replace(reg2, '$1').replace(/]_web/g,']')//start[衰]hello world <br>[闪电]end;
+			var ret3 = str2.replace(/<(?:img|IMG).*?text="(.*?)(_web)?".*?>/g,'$1')//start[衰]hello world <br>[闪电]end;
+		</script>
+	</body>
+
+</html>
