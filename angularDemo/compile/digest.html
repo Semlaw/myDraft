@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+    
+</head>
+<body>
+	<div>$digest会从当前scope，到所有的children Scope去进行脏值检查，$apply会从$rootScope调用digest</div>
+	<div><span>rootScope</span><span>{{rootName}}</span></div>
+	<div>
+		<div ng-controller="MyController">
+			<div>{{childName}}</div>
+		</div>
+	</div>
+	<script>
+		
+        angular.module('myApp', [])
+            .controller('MyController', function ($scope, $compile,$rootScope) {
+            	$scope.childName = 'old'
+                 $rootScope.rootName ='oldRoot'     
+            })
+    </script>
+    <script type="text/javascript">
+    	
+    	function foo(){
+    		$($$AsyncCallbackProvider())
+    	}
+    	
+    </script>
+</body>
+</html>

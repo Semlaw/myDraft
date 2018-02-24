@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		<div ng-controller="appCtrl">
+			
+		</div>
+		<script src="../../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('app',[])
+				.controller('appCtrl',function(httpServe){
+					console.dir(httpServe)
+				})
+				.factory('httpServe',['$http',function(http){
+					return {
+						serve:http,
+						name:'http'
+					}
+				}])
+			
+		</script>
+	</body>
+</html>

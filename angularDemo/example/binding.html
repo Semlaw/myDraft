@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div style="display: none;">
+			<div>
+				<h4>val值：{{val}}</h4>
+				<h4 age="someCtrlAge">age值：{{age}}</h4>
+				<button ng-click="add()">计数add</button>
+				<a href="{{myUrl}}">{{myLinkText}}</a>
+				<br />
+				<div ng-click="changeVal()">change val</div>
+				<input type="text" ng-model="name" placeholder="directive name" />
+				<h4 ng-click="greet('Pikachu')">greet:</h4>
+			</div>
+		</div>
+		<br />
+		<div ng-controller="someCtrl">
+			<div>someCtrlAge:{{someCtrlAge}}</div>
+			<h4>getTime: {{getTime()}}</h4>
+			<input type="text" ng-model="user" placeholder="ctrl name" />
+			<div style="color: red;">下面是指令</div>
+			<div>
+				<!--scope @ 可以用{{}}取变量值-->
+				<div dval="getTime()" attrname="user" greet="sayHello(user)" age="someCtrlAge" my-directive my-url="http://google.com" link-text="{{linkTxt}}"></div>
+			</div>
+		</div>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('app', [],function(){
+				console.dir(arguments)
+			})
+				.directive('myDirective', function() {
+					return {
+						restrict: 'A',
+						replace: true,
+						scope: {
+							myUrl: '@', //绑定策略
+							myLinkText: '@linkText', //绑定策略 
+							val: '=dval',//双向绑定
+							age: '=',
+							name:'=attrname',
+							greet: '&'
+						},
+						controller: function($scope) {
+							$scope.add = function() {
+								console.dir($scope.age++)
+							};
+							$scope.changeVal = function() {
+								$scope.val = Math.random();
+							}
+						},
+						template: `<div>
+				<h4>val值：{{val}}</h4>
+				<h4 age="someCtrlAge">age值：{{age}}</h4>
+				<button ng-click="add()">age值增加</button>
+				<h4>当前数值：{{count}}</h4>
+				<a href="{{myUrl}}">{{myLinkText}}</a>
+				<br />
+				<div ng-click="changeVal()">change val</div>
+				<input type="text" ng-model="name" placeholder="directive name" />
+				<h4 ng-click="greet('Utrlman')">greet:</h4>
+			</div>`
+
+					};
+				})
+				.controller('someCtrl', function($scope) {
+					$scope.name = 'Keven';
+					$scope.someCtrlAge = 11
+					$scope.user = "Steve";
+					$scope.getTime = function() {
+						return "时间戳" + Date.now();
+					};
+					$scope.linkTxt = 'cross GFW';
+					$scope.sayHello = function(name) {
+						console.log("Hello " + name);
+					}
+				})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="myApp">
+		<a ui-sref="home">home</a>
+		<a ui-sref="shop">shop</a>
+		<a ui-sref="center">center</a>
+		<div ui-view></div>
+
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('myApp', ['ui.router'])
+				.constant('ACCESS_LEVELS', {
+					pub: 1,
+					user: 2,
+					center: 3
+				})
+				//				.config(function($routeProvider, ACCESS_LEVELS) {
+				//					$routeProvider
+				//						.when('/', {
+				//							controller: 'MainController',
+				//							templateUrl: 'views/main.html',
+				//							access_level: ACCESS_LEVELS.pub
+				//						})
+				//						.when('/account', {
+				//							controller: 'AccountController',
+				//							templateUrl: 'views/account.html',
+				//							access_level: ACCESS_LEVELS.user
+				//						})
+				//						.otherwise({
+				//							redirectTo: '/'
+				//						});
+				//				})
+				.config(["$stateProvider", "$locationProvider", "$urlRouterProvider", "ACCESS_LEVELS",function($stateProvider, $locationProvider, $urlRouterProvider, ACCESS_LEVELS) {
+					//		$urlRouterProvider
+					//			.otherwise('/replay');
+					$stateProvider
+						.state('shop', {
+							url: 'shop',
+							template: '<h4>hello this is shop</h4>',
+							controller: 'shopCtrl',
+							access_level: ACCESS_LEVELS.pub
+						})
+						.state('center', {
+							url: 'center',
+							template: `<div>
+			<h4>center</h4>
+			<button ng-clik="click()">请求数据</button>
+		</div>`,
+							controller: 'centerCtrl',
+							access_level: ACCESS_LEVELS.center
+						})
+						.state('home', {
+							url: '',
+							template: '<h4>hello this is home</h4>',
+							controller: 'homeCtrl',
+							access_level: ACCESS_LEVELS.user
+						});
+
+					$urlRouterProvider
+						.otherwise('/home');
+
+				}])
+				.run(function($rootScope, $location, $state) {
+					// 给$routeChangeStart设置监听
+					$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+						console.dir(arguments)
+						if(toState.access_level === 1) {
+							console.log('toHOME')
+							event.preventDefault()
+							$state.go('home')
+						}
+						//						if(!Auth.isAuthorized(next.$$route.access_level)) {
+						//							if(Auth.isLoggedIn()) {
+						//								// 用户登录了，但没有访问当前视图的权限
+						//								$location.path('/');
+						//							} else {
+						//								$location.path('/login');
+						//							}
+						//						}
+					});
+				})
+				.controller('shopCtrl', function() {
+
+				})
+				.controller('homeCtrl', function() {
+
+				})
+				.controller('centerCtrl', function($scope, Backend, myfactory) {
+					$scope.click = function() {
+						console.log('click');
+						//							Backend.getDashboardData()
+						myfactory.getDashboardData()
+					}
+				})
+				.service('Backend', function($http, $q, $rootScope) {
+					this.getDashboardData = function() {
+						$http({
+							method: 'GET',
+							url: '/dashboard'
+						}).success(function(data) {
+							return data.data;
+						}).catch(function(reason) {
+							$q.reject(reason);
+							console.dir(reason)
+						});
+					};
+				})
+				.factory('myfactory', function($http, $q, $rootScope) {
+					var getDashboardData = function() {
+						$http({
+							method: 'GET',
+							url: '/dashboard'
+						}).success(function(data) {
+							return data.data;
+						}).catch(function(reason) {
+							$q.reject(reason);
+							console.dir(reason)
+						});
+					};
+					return {
+						getDashboardData
+					};
+				})
+		</script>
+	</body>
+
+</html>

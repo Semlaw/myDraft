@@ -1,0 +1,142 @@
+<html ng-app='app'>
+
+	<head>
+		<title>order by</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="table-responsive" ng-controller="demoController">
+			<div>{{arrTemp|json}}</div>
+			<table id="tb" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-2"></th>
+						<th class="col-md-4" ng-repeat="tTime in ranges" ng-bind="tTime |date :'MM-dd'"></th>
+					</tr>
+				</thead>
+				<tr ng-repeat="(key,item) in listData track by key">
+					<td ng-bind="key"></td>
+					<td ng-repeat="a in item track by $index" ng-bind="a"></td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			angular.module('app', [])
+				.controller('demoController', function($scope,disposeData) {
+					$scope.arrTemp = [{name:12,age:3}];
+					var listById = []
+					var ranges = []
+					var aDay = 24 * 60 * 60 * 1000
+					var start = 1499616000000 - 4 * aDay //7 2
+					var end = 1499616000000 + 5 * aDay //7 12
+					var res = [{
+							createdTime: 1499668554000,
+							id: 161,
+							impr: 5,
+							ip: "192.168.0.105",
+							qrCodeId: 117,
+							templateTime: 1499616000000
+						},
+						{
+							createdTime: 1499668554000 + aDay,
+							id: 161,
+							impr: 5,
+							ip: "192.168.0.105",
+							qrCodeId: 117,
+							templateTime: 1499616000000
+						},
+						{
+							createdTime: 1499668498000,
+							id: 160,
+							impr: 1,
+							ip: "192.168.0.105",
+							qrCodeId: 117,
+							templateTime: 1499529600000
+						}
+					]
+
+					do {
+						ranges.push(start)
+						start += aDay
+					}
+					while (start <= end)
+					console.dir(ranges)
+					//按id分类
+					var listById = {}
+					res.forEach(function(item) {
+						var id = item.id
+						if(!listById[id]) {
+							listById[id] = []
+						}
+						listById[id].push(item)
+					})
+					console.log(listById)
+
+					//按时间添加数据
+					var listByTime = {}
+
+					for(let k in listById) {
+						listByTime[k] = []
+						ranges.forEach(function(tTime) {
+							var aData = listById[k].find(function(item) {
+								return item.templateTime == tTime
+							})
+							if(aData) {
+								listByTime[k].push(aData.impr)
+							} else {
+								listByTime[k].push("无数据")
+							}
+						})
+					}
+					console.dir(listByTime)
+					$scope.ranges = ranges
+					$scope.listData = listByTime
+//					console.dir($scope.listData)
+					console.dir(disposeData(start,end,res))
+				})
+				.factory("disposeData", function() {
+					return function(start, end, res) {
+						var listById = []
+						var ranges = []
+						var aDay = 24 * 60 * 60 * 1000
+						do {
+							ranges.push(start)
+							start += aDay
+						}
+						while (start <= end)
+						console.dir(ranges)
+						//按id分类
+						var listById = {}
+						res.forEach(function(item) {
+							var id = item.id
+							if(!listById[id]) {
+								listById[id] = []
+							}
+							listById[id].push(item)
+						})
+						//按时间添加数据
+						var listByTime = {}
+
+						for(let k in listById) {
+							listByTime[k] = []
+							ranges.forEach(function(tTime) {
+								var aData = listById[k].find(function(item) {
+									return item.templateTime == tTime
+								})
+								if(aData) {
+									listByTime[k].push(aData.impr)
+								} else {
+									listByTime[k].push("无数据")
+								}
+							})
+						}
+						return {ranges:ranges,list:listByTime}
+					}
+				})
+		</script>
+	</body>
+
+</html>

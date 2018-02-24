@@ -1,0 +1,299 @@
+好友列表 type array 
+ 一条好友数据
+ [
+   {
+      "userName":"@99e9cd56d3aaa46b1b844c1b83436f1a081f63318e827537fff59c9f4ef4c87b",
+      "keyWord":"",
+      "nickName":"花开半夏",
+      "memberList":
+      [],
+      "city":"长宁",
+      "remarkName":"",
+      "headImgUrl":"file:///d:/51zan\\chat\\my_file\\0_@99e9cd56d3aaa46b1b844c1b83436f1a081f63318e827537fff59c9f4ef4c87b.png",
+      "pyInitial":"HKBX",
+      "province":"上海",
+      "sex":"2",
+      "isOwner":"0",
+      "memberCount":"0",
+      "chatContact":
+      {
+         "type":0,
+         "flag":"花开半夏",
+         "cId":1,
+         "isChating":null,
+         "chatStatus":2,
+         "ccId":null,
+         "ccgId":null
+      },
+      "contactList":null
+   }]
+
+   
+   
+   一条群数据
+   
+   
+   {
+   "userName":"@@2a5dab96633ad6c1dfe5603f18267ccdf4be8b0b6ad871e868e8c0924dcf1df9",
+         "keyWord":"",
+         "nickName":"不战小伙伴群",
+         "pyInitial":"BZXHBQ",
+         "city":"",
+         "headImgUrl":"file:///d:/51zan\\chat\\my_file\\0_@@2a5dab96633ad6c1dfe5603f18267ccdf4be8b0b6ad871e868e8c0924dcf1df9.png",
+         "sex":"0",
+         "province":"",
+         "remarkName":"",
+         "memberCount":"266",
+         "isOwner":"0",
+         "contactList":null,
+      "chatContact":
+      { "type":1,
+      "flag":"不战小伙伴群",
+      "cId":1,
+      "chatStatus":1,
+      "isChating":null,
+      "ccId":null,
+      "ccgId":null
+      
+      }
+         ,
+         "memberList":
+         [
+            {
+               "userName":"@26783e249e6a39106d5653474618256775e526533f8104d01787d716afd50c2d",
+               "keyWord":"",
+               "nickName":"冰冰",
+               "pyInitial":"",
+               "city":null,
+               "headImgUrl":null,
+               "sex":null,
+               "province":null,
+               "remarkName":null,
+               "memberCount":null,
+               "isOwner":null,
+               "contactList":null,
+               "memberList":null
+            },
+            {
+               "userName":"@361b6dcc5bf3aedbeacfedc91c4be0b7",
+               "keyWord":"liq",
+               "nickName":"不  战（号满加buzhantaoke）",
+               "pyInitial":"",
+               "city":null,
+               "headImgUrl":null,
+               "sex":null,
+               "province":null,
+               "remarkName":null,
+               "memberCount":null,
+               "isOwner":null,
+               "contactList":null,
+               "memberList":null
+            }
+		]
+	}
+
+构造一条消息
+
+{
+				"cId": cId,
+				"ret": null,
+				"isMe": true,
+				"contact": {
+					"userName": "@99e9cd56d3aaa46b1b844c1b83436f1a081f63318e827537fff59c9f4ef4c87b",
+					"keyWord": "",
+					"nickName": "花开半夏",
+					"memberList": [],
+					"city": "长宁",
+					"remarkName": "",
+					"headImgUrl": "file:///d:/51zan\\chat\\my_file\\0_@99e9cd56d3aaa46b1b844c1b83436f1a081f63318e827537fff59c9f4ef4c87b.png",
+					"pyInitial": "HKBX",
+					"province": "上海",
+					"sex": "2",
+					"isOwner": "0",
+					"memberCount": "0",
+					"chatContact": {
+						"type": 0,
+						"flag": "花开半夏",
+						"cId": 1,
+						"isChating": null,
+						"chatStatus": 2,
+						"ccId": null,
+						"ccgId": null
+					},
+					"contactList": null
+				},
+				"rm": {
+					"content": $scope.chatEditAreaCtn || '[图片]',
+					"mediaUrl": fileUrl || null,
+
+					"createTime": new Date(),
+					"msgType": fileUrl ? 3 : 1
+				},
+				"errMsg": null,
+				"toUserName": $rootScope.chatUserData.chatContact.userName
+			}
+   
+
+发送消息的回执
+{
+    "rm": null,
+    "contact": {
+        "city": "",
+        "sex": "2",
+        "pyInitial": "WYBTB",
+        "province": "",
+        "userName": "@9fc6b9bbe1cdcbf9bac89f27f71a5b5b85728b63f86ae638ec1e4d1f878de7b4",
+        "memberCount": "0",
+        "isOwner": "0",
+        "keyWord": "",
+        "memberList": null,
+        "remarkName": "",
+        "nickName": "我又不特别",
+        "headImgUrl": "file:///d:/51zan\\chat\\my_file\\0_@9fc6b9bbe1cdcbf9bac89f27f71a5b5b85728b63f86ae638ec1e4d1f878de7b4.png",
+        "contactList": null,
+        "chatContact": {
+            "type": 0,
+            "cId": 1,
+            "flag": "我又不特别",
+            "chatStatus": 2,
+            "isChating": 0,
+            "ccgId": 0,
+            "ccId": 2
+        }
+    },
+    "ret": 0,
+    "msgId": "9170131306496316688",
+    "localId": "14906995695278473",
+    "msg": null
+}
+javaChat 给的信息
+
+{
+    "contact": {
+        "keyWord": "",
+        "userName": "@71628f5f2d3fe564a20c012a46aa70feb278996526f80335eca8b3780e15f769",
+        "sex": "0",
+        "province": "",
+        "pyInitial": "JGGJNZTIVU",
+        "city": "",
+        "memberCount": "0",
+        "isOwner": "0",
+        "headImgUrl": "/cgi-bin/mmwebwx-bin/webwxgeticon?seq=604080251&username=@71628f5f2d3fe564a20c012a46aa70feb278996526f80335eca8b3780e15f769&skey=@crypt_1cecc0fc_a74b93971258b4252d516499b2c24e5a",
+        "remarkName": "JGGJNZTIVU1915",
+        "nickName": "JGGJNZTIVU",
+        "contactList": null,
+        "chatContact": {
+            "type": 0,
+            "flag": "JGGJNZTIVU1915",
+            "isChating": 1,
+            "chatStatus": 1,
+            "ccgId": null,
+            "cId": 1,
+            "ccId": 3
+        },
+        "memberList": null
+    },
+    "rm": {
+        "content": "嗯hey",
+        "userName": null,
+        "imgHeight": null,
+        "voiceLength": 0,
+        "imgWidth": null,
+        "headImgUrl": null,
+        "mediaUrl": null,
+        "createTime": "2017-03-28 21:23:08",
+        "nickName": null,
+        "msgType": 1,
+        "fromUserName": "@71628f5f2d3fe564a20c012a46aa70feb278996526f80335eca8b3780e15f769",
+        "recommendInfo": {
+            "content": "",
+            "userName": "",
+            "nickName": "",
+            "ticket": ""
+        },
+        "ticket": null,
+        "msgId": "6147022419951057586",
+        "contentTemp": "嗯hey"
+    },
+    "msg": null,
+    "localId": null,
+    "ret": null,
+    "msgId": null
+}
+
+获取头像
+public void getHeadImgUrl (final String cId, final String src,final String userName, final String src,final JSFunction function) {
+		new Thread(){
+			@Override
+			public void run() {
+				lastApi = ChatApiManager.getInstance().getApi(cId);
+				function.invoke(null, null != lastApi ? lastApi.getHeadImgUrl(userName) : "");
+			}
+		}.start();
+	}
+	
+虎赞info
+{"name":"111111","userInfo":null,"mobile":"18017669575","headImgUrl":"http://51zan.oss-cn-shanghai.aliyuncs.com/a63035e1-e51b-4584-8fcf-354b8b00733e.jpg"}
+
+分批获取联系人
+public void getUserList(final String cId, final String pageNo, final JSFunction function) {
+		new Thread() {
+			@Override
+			public void run() {
+				lastApi = ChatApiManager.getInstance().getApi(cId);
+				function.invoke(null, null != lastApi ? lastApi.getChatUserList(pageNo) : "");
+			}
+		}.start();
+	}
+/**
+	 * 获取群成员信息
+	 */
+	public void getChatGroupMember(final String cId,final String userName,final String page, final JSFunction function)
+
+	 * 拿取头像
+	 * @param cId
+	 * @param userName
+	 * @param function
+	 */
+	public void getHeadImgUrl (final String cId, final String userName,final String groupUserName, final JSFunction function)
+
+加好友消息
+
+{
+   "msgId":null,
+   "ret":null,
+   "localId":null,
+   "msg":null,
+   "cId":7,
+   "rm":
+   {
+      "content":"我是51赞CRM",
+      "userName":null,
+      "nickName":null,
+      "msgId":"8158094019535833423",
+      "contentTemp":"我是51赞CRM",
+      "msgType":37,
+      "fromUserName":"fmessage",
+      "imgHeight":null,
+      "imgWidth":null,
+      "voiceLength":0,
+      "recommendInfo":
+      {
+         "content":"我是51赞CRM",
+         "userName":"@7610b9650f5a3299293c422105f64d8e942b182ab619c434ecdd89e35e527920",
+         "nickName":"51赞CRM",
+         "headImgUrl":"http://wx.qlogo.cn/mmhead/ver_1/icbWpKFItSRGvxAMAibCQyNRr1A3MXnlA2Q6s3ua74icEJFajCEBpRqia1VrjmDxSBNnOjXgibjpfoZiaocOnk0CTTia5uiadHL04K3Cib6lOadzibjYo/96",
+         "ticket":"v2_f6b20e0f1e5f06c4597b0b86109778cf7c8951a3c3137b1d3832b9a16c9b115567220e2ce0b8f42540ff6b7d3f5e6a48a1b635e8ba8592fd1ea54380d5e17e54@stranger"
+      },
+      "createTime":"2017-03-31 19:37:59",
+      "headImgUrl":null,
+      "ticket":null,
+      "mediaUrl":null
+   },
+   "contact":null
+}
+
+erpInfo
+
+{"id":"c7437964e7e042158357b18f3a499a8f","result":null,"code":null,"tags":["1","2","3"],"realname":"王二","userId":"d945e633-0df5-4281-99ad-14a3a146dff7","createdTime":"2017-03-22 10:17:13","phone":"18117022502","deviceName":null,"dataSources":"批量导入"}
+

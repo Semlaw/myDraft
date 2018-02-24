@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<div ng-controller="myCtrl">
+			<div>{{name}}</div>
+			<div ng-non-bindable>{{name}}</div>
+		</div>
+		<script type="text/javascript">
+			angular.module('app',[])
+				.controller('myCtrl',['$scope','$parse',function(scope,parse){
+					scope.name = 'Pikachu';
+					
+					var context = {
+						name:'apple'
+					};
+					
+					var expr = `'Hello ' + name`;
+					var parseFunc = parse(expr);
+					console.dir(parseFunc)
+					var val = parseFunc(scope)
+					console.log(val)
+				}])
+		</script>
+	</body>
+</html>

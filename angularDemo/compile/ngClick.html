@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>angular</title>
+		<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body id="body" ng-controller="MyController">
+		<!--<div ng-click="">
+			this is a div
+		</div>
+
+		<div class="wrapper" ng-bind-html="code">
+
+		</div>
+		<div ng-click="click(this)">
+			haha 动态添加html代码
+		</div>-->
+		<div class="repeat">
+			<div ng-repeat="item in lists" ng-bind="item">
+
+			</div>
+		</div>
+		<br /><br />
+		<button ng-click="obj.num=!obj.num">NUM：{{obj.num}}</button>
+		<div class="wrapper" ng-bind-html="code2()">
+
+		</div>
+
+		<script>
+			angular.module('myApp', ['ngSanitize'])
+				.controller('MyController', function($scope, $compile, $log) {
+					$scope.obj = {
+						num: false
+					}
+					$scope.$watch('obj.num', function() {
+						console.dir($scope.obj)
+					}, true)
+
+					$scope.lists = ['hello', 'hallo', 'come on']
+					$scope.num = 1
+					$scope.msg = 'hello world ';
+					console.dir(this)
+					console.dir($scope)
+					$scope.click = function(a) {
+						console.dir(a)
+						$log.info(a)
+					}
+					// 创建编译函数
+					var compileFn = $compile('<div ng-click="click(this)">{{msg}}</div>');
+					// 传入scope，得到编译好的dom对象(已封装为jqlite对象)
+					// 也可以用$scope.$new()创建继承的作用域
+					var $dom = compileFn($scope);
+					console.dir($dom)
+					// 添加到文档中
+					//					$dom.appendTo(document.getElementById('body'));
+
+					$scope.code = `<div class="item" ng-click="click(this)">
+			haha 动态添加html代码
+		</div>`
+
+					$scope.code2 = function() {
+						return '<h2>' + $scope.num + '</h2>'
+					}
+				})
+				.config(['$provide', function($provide) {
+					$provide.decorator('ngClickDirective', ['$delegate', '$timeout', function($delegate, $timeout) {
+						var original = $delegate[0].compile;
+						var delay = 500;
+						$delegate[0].compile = function(element, attrs, transclude) {
+
+							var disabled = false;
+
+							function onClick(evt) {
+								if(disabled) {
+									evt.preventDefault();
+									evt.stopImmediatePropagation();
+								} else {
+									disabled = true;
+									$timeout(function() {
+										disabled = false;
+									}, delay, false);
+								}
+							}
+							//   scope.$on('$destroy', function () { iElement.off('click', onClick); });
+							element.on('click', onClick);
+
+							return original(element, attrs, transclude);
+						};
+						return $delegate;
+					}]);
+				}]);
+		</script>
+	</body>
+
+</html>

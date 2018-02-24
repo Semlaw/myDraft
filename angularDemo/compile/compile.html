@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        angular.module('myApp', [])
+            .controller('MyController', function ($scope, $compile) {
+            	
+                var vm = this;
+                vm.msg = 'hello world ';
+                console.dir(this)
+            	console.dir($scope)
+                // 创建编译函数
+                var compileFn = $compile('<div>{{appCtrl.msg}}</div>');
+                // 传入scope，得到编译好的dom对象(已封装为jqlite对象)
+                // 也可以用$scope.$new()创建继承的作用域
+                var $dom = compileFn($scope); 
+                console.dir($dom)
+                // 添加到文档中
+                $dom.appendTo('body');            
+            })
+    </script>
+</head>
+<body ng-controller="MyController as appCtrl">
+</body>
+</html>

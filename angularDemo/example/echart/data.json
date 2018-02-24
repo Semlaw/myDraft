@@ -1,0 +1,92 @@
+{
+	"code": 200,
+	"msg": "请求操作API成功",
+	"result": {
+		"data": {
+			"2017-03": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			},
+			"2017-04": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			},
+			"2017-05": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			},
+			"2017-06": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			},
+			"2017-07": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			},
+			"2017-08": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			},
+			"2017-09": {
+				"countDate": 1505059200000,
+				"paymentAvg": 19007,
+				"paymentAvgYuan": "190.07",
+				"paymentCount": 27,
+				"paymentCustomer": 22,
+				"paymentSum": 561232,
+				"paymentSumYuan": "5612.32",
+				"repeatPercent": 10.475,
+				"sellerNick": "亲情无价90",
+				"userId": "05ec5de9-279b-4150-afc1-faa88ba73466"
+			}
+		}
+	}
+}

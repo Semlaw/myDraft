@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.edit-area {
+				min-height: 50px;
+			}
+			.pull-left{
+				float: left;
+			}
+			.wrapper{
+				width: 500px;
+				margin: 20px auto;
+			}
+			.edit-area{
+				background-color: #ececec;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="http://chat.51zan.com/css/expression.css"/>
+	</head>
+
+	<body ng-app="app" ng-controller="appCtrl">
+		<div class="wrapper">
+			<h4>faceInputAble</h4>
+			<div class="edit-wrapper">
+				<div contenteditable class="edit-area" max-model-length="100" face-editable ng-model="dataModel"></div>
+				<div style="margin-bottom: 5px;" class="word-number-count">
+					<span title="表情" class="qqface-btn">表情按钮</span>
+					
+					<span ng-bind="dataModel.length"></span>/<span>100</span>
+				</div>
+				<div style="margin: 20px 0; ">
+					<h3>model值</h3>
+					<div ng-bind="dataModel"></div>
+				</div>
+				
+			</div>
+			<div contenteditable="" class="edit-area">
+				
+			</div>
+			
+		</div>
+		<div style="display: none;" class="facebox">
+			<div class="qq_face">
+				<a class="face pull-left" id="emoji" ng-repeat="list in qqFaceMap track by list.id" text="{{list.text}}" title="{{list.text}}_web" type="qq" ng-class="'qqface'+list.id" ng-click="faceClick(list)"></a>
+			</div>
+		</div>
+		<script src="http://static.51zan.com/bower_components/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://static.51zan.com/bower_components/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/editServiceModule.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

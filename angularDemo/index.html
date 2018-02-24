@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div ng-controller="CityController">
+			<input id="in" type="text" ng-model="txt" ng-change="foo()" />
+			<div ng-bind="txt"></div>
+			<select ng-model="citym" ng-options="city as city.name for city in cities">
+				<option value="">Choose City</option>
+			</select>
+			Best City: {{ citym.name }}
+			<h4>{{citym | json}}</h4>
+			<button ng-click="click()">btn</button>
+			<div></div>
+		</div>
+		<script type="text/javascript">
+			var a;
+			angular.module('myApp', ['app2'])
+				.controller('CityController', function($scope,random,dateFilter) {
+					$scope.txt = ''
+					
+					$scope.cities = [{
+						name: 'Seattle',
+						id:1
+					}, {
+						name: 'San Francisco',
+						id:2
+					}, {
+						name: 'Chicago',
+						id:3
+					}, {
+						name: 'New York',
+						id:4
+					}, {
+						name: 'Boston',
+						id:5
+					}];
+					
+					$scope.click = function(){
+						alert(!$scope.citym)
+					}
+					console.log(dateFilter('1500626021272','yyyy-MM-dd'))
+					
+				});
+		</script>
+		<script type="text/javascript">
+			angular.module('app2',[])
+				.factory('random',function(){
+					return {
+						one:Math.random()
+					}
+				})
+		</script>
+	</body>
+
+</html>

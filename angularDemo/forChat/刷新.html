@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			img{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				background-color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="myClick()">刷新</button>
+		<img width="100" height="100" filesrc = "taobao.com" data-original='fordatasrc' src="" alt="" />
+		<script type="text/javascript">
+			
+			function reload (att){
+				console.dir($(this).data('original'))
+				console.log($(this).attr("data-original"))
+				att = 'filesrc'
+				var str = this.getAttribute(att)
+				console.log(str)
+				str = str +'?unix=' + new Date().getTime()
+				this.src = str
+				console.log(str)
+			}
+			
+			function myClick(){
+				$('img').each(reload)
+			}
+		</script>
+	</body>
+</html>

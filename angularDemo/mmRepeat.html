@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html ng-app="App">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<div mm-repeat="item in dataList">
+			<h4>{{item |json}}</h4>
+		</div>
+		<div ng-repeat="item in dataList">
+			<h4>{{item | json}}</h4>
+		</div>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var temp
+			angular.module('App', [])
+				.controller('myCtrl', function($scope, $timeout) {
+					alert('xxs')
+					$scope.dataList = [{
+						myData: '1',
+						chatUserData: 'ab',
+						chatContent: [],
+						unreadCount: 0,
+						lastTime: 2
+					}, 
+					{
+						myData: 'b',
+						top:true
+						
+					},
+					{
+						myData: 'b',
+						chatUserData: 'ba',
+						chatContent: [],
+						unreadCount: 0,
+						lastTime: 6
+					},
+					{
+						myData: 'f',
+						chatUserData: 'ba',
+						chatContent: [],
+						unreadCount: 0,
+						lastTime: 6
+					},
+					
+					{
+						myData: '?',
+						chatUserData: 'ba',
+						chatContent: [],
+						unreadCount: 0,
+						lastTime: 6
+					},{
+						myData: '#',
+						chatUserData: 'cc',
+						chatContent: [],
+						unreadCount: 0,
+						lastTime: 7
+					},{
+						myData: '~',
+						chatUserData: 'dd',
+						chatContent: [],
+						unreadCount: 0,
+						lastTime: 2
+					}]
+				})
+				.directive("mmRepeat", ["$document", "$compile", "$rootScope", function(e, t, a) {
+					function n(e, t, a, n, i) {
+						var o, c, r = 0;
+						if(0 === e.length) return 0;
+						if(a > n) {
+							for(var s = t; s > -1; s--)
+								if(o = e[s], c = r, r += o._h || (o._h = i(o)), a - r < n) return {
+									index: s,
+									total: c
+								};
+							return {
+								index: 0,
+								total: 0
+							}
+						}
+						for(var s = t; s < e.length; s++)
+							if(o = e[s], c = r, r += o._h || (o._h = i(o)), a + r > n) return {
+								index: s,
+								total: c
+							};
+						return {
+							index: e.length - 1,
+							total: r
+						}
+					}
+
+					function i(e, t, a, n) {
+						if(0 === e.length || t === a) return 0;
+						for(var i, o = 0, c = t; c < a; c++) i = e[c], o += i._h || (i._h = n(i));
+						return o
+					}
+
+					function o(e, t, a, o) {
+						var c, r, s, l, d, f = t.scroll - a,
+							u = t.scroll + t.visible + a;
+						return f > 0 ? (d = n(e, 0, 0, f, o), c = d.index, f = d.total) : (c = 0, f = 0), r = n(e, c, f, u, o).index, r = r >= e.length ? e.length - 1 : r, s = i(e, 0, c, o), l = i(e, r + 1, e.length, o), {
+							topHeight: s,
+							bottomHeight: l,
+							startIndex: c,
+							endIndex: r
+						}
+					}
+
+					function c(e, t, a, n) {
+						var i, c = o(n, t, e.bufferHeight, e.heightCalc);
+						e.bottomHeight = c.bottomHeight, e.topHeight = c.topHeight, a.length = 0, i = n.slice(c.startIndex, c.endIndex + 1), [].push.apply(a, i)
+					}
+
+					function r(e) {
+						if(!(e.length <= 0))
+							for(var t, a = 0, n = 0; n < e.length; n++) t = e[n], t._offsetTop = a, a += t._h
+					}
+
+					function s(e, t, a) {
+						if(!(e.length <= 0))
+							for(var n, i = 0; i < e.length; i++) n = e[i], n._h && !a || (n._h = t(n))
+					}
+
+					function l(e, t, a) {
+						var n = function(e) {
+							setTimeout(function() {
+								a(e)
+							}, 0)
+						};
+						if(0 == e.length) return void a(e);
+						for(var i, o = e.length, c = 0, r = 0; r < o; r++) i = e[r], i._h ? (c++, c == o && n(e)) : t(i, function(t) {
+							return function(a) {
+								t._h = a, t._calcing = !1, c++, c == o && n(e)
+							}
+						}(i))
+					}
+
+					function d(e) {
+						for(var t = !0, a = 0; a < e.length; a++) e[a]._h || (t = !1);
+						return t
+					}
+					return {
+						restrict: "EA",
+						priority: 1e3,
+						scope: !0,
+						terminal: !0,
+						link: function(e, a, n) {
+							var i = [],
+								o = {
+									maxScroll: 0,
+									scroll: 0,
+									size: 0,
+									visible: 687
+								},
+								f = n.mmRepeat.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/),
+								u = f[2],
+								m = (f[1], '<div ng-style="{height:topHeight}" class="top-placeholder"></div><div ng-repeat="' + n.mmRepeat + '">' + a.html() + '</div><div ng-style="{height:bottomHeight}" class="bottom-placeholder"></div>'),
+								g = t(m)(e);
+							a.html(""), a.append(g), e.bufferHeight || (e.bufferHeight = 100), n.preCalc && "false" !== n.preCalc ? e.preCalc = !0 : e.preCalc = !1, e[u] = [], e.$on("onScroll", function(t, a) {
+								return o = a.y, e.heightCalc && 2 === e.heightCalc.length && !d(i) ? void l(i, e.heightCalc, function() {
+									d(i) && (r(i), c(e, o, e[u], i), e.$digest(), e.$emit("mmRepeat:reCalc"))
+								}) : (c(e, o, e[u], i), void e.$digest())
+							}), e.$parent.$watch(n.heightCalc, function(t) {
+								"function" == typeof t && (e.heightCalc = t)
+							}), n.height && (e.heightCalc = function() {
+								return parseInt(n.height)
+							}), e.bufferHeight = parseInt(n.bufferHeight), e.$parent.$watchCollection(f[2], function(t) {
+								if(t instanceof Array)
+									if(i = t, t.length > 0) {
+										for(var a = 0; a < i.length; a++) i[a]._index = a;
+										e.preCalc ? l(i, e.heightCalc, function() {
+											d(i) && (r(i), c(e, o, e[u], i), e.$digest(), e.$emit("mmRepeat:change"))
+										}) : (s(i, e.heightCalc, n.noCache), r(i), c(e, o, e[u], i), e.$emit("mmRepeat:change"))
+									} else e[u].length = 0, e.$emit("mmRepeat:change")
+							})
+						}
+					}
+				}])
+		</script>
+	</body>
+
+</html>

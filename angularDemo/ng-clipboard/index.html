@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="MyApp" ng-controller="MyController">
+		<!--<input type="text" ng-model="textToCopy">-->
+		<button clipboard supported="supported" text="textToCopy" on-copied="success()" on-error="fail(err)">Copy</button>
+		<button data-txt='some msg' ng-click="clickCopy()">拷贝</button>
+		<script src="../js/angular1.45.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angular-clipboard/angular-clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('MyApp', ['angular-clipboard'])
+				.controller('MyController', ['$scope', 'clipboard',function($scope,clipboard) {
+					$scope.supported = false;
+
+					$scope.textToCopy = 'I can copy by clicking!';
+
+					$scope.success = function() {
+						console.log('Copied!');
+					};
+
+					$scope.fail = function(err) {
+						console.error('Error!', err);
+					};
+					$scope.clickCopy = function(){
+						console.dir(clipboard);
+						var ret = clipboard.copyText('Copy this text');
+						console.log(ret)
+					}
+				}])
+//				.directive('copyTxt',['clipboard',function(clipboard){
+//					return {
+//						restrict:'A',
+//						
+//					}
+//					
+//				}])
+		</script>
+	</body>
+
+</html>

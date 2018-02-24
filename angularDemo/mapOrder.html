@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/angular1.45.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			pre {
+				border: 1px solid gray;
+				height: 90px;
+			}
+		</style>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<input type="text" ng-model="filKey" />
+		<li ng-repeat="(idx,item) in dataList | orderBy : ['myData','top'] |filter: filKey " ng-click="liClick(idx,$index)">
+			<h5>{{item.myData}} 》》{{item.chatUserData}}</h5>
+			<!--<h6>{{item.lastTime}}</h6>-->
+		</li>
+		<!--<li ng-repeat="(key,item) in dataList | orderBy:'+lastTime'">
+			<h5>{{item.myData}}</h5>
+			<h6>{{item.lastTime}}</h6>
+		</li>-->
+		<script type="text/javascript">
+			var aDate = new Date().getTime()
+				//			console.dir(typeof aDate)
+			angular.module('app', [])
+				.controller('myCtrl', function($scope) {
+					$scope.liClick = function(key, idx) {
+						console.log('key%d', key)
+						console.log(('index:%d', idx))
+						console.dir($scope.dataList)
+					}
+					var dataList = [
+							["1", {
+								myData: '1',
+								chatUserData: 'ab',
+								chatContent: [],
+								unreadCount: 0,
+								lastTime: 2
+							}],
+							["b", {
+								myData: 'b',
+								top: true
+
+							}],
+
+							["?", {
+								myData: '?',
+								chatUserData: 'ba',
+								chatContent: [],
+								unreadCount: 0,
+								lastTime: 6
+							}]
+						]
+					
+					$scope.dataList = new Map(dataList)
+						//					$scope.dataList = {
+						//						'_11': {
+						//							myData: 'a',
+						//							chatUserData: 'ab',
+						//							chatContent: [],
+						//							unreadCount: 0,
+						//							lastTime: 2
+						//						},
+						//						'_33':{
+						//							myData: 'bb',
+						//							chatUserData: 'ba',
+						//							chatContent: [],
+						//							unreadCount: 0,
+						//							lastTime: 10
+						//						},
+						//						'_22':{
+						//							myData: 'cc',
+						//							chatUserData: 'cc',
+						//							chatContent: [],
+						//							unreadCount: 0,
+						//							lastTime: 7
+						//						}
+						//					}
+				})
+		</script>
+	</body>
+
+</html>

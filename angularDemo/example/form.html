@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="inputExample">
+
+		<div ng-controller="ExampleController">
+			<div ng-if="show">
+				<form name="myForm">
+					<label>
+       User name:
+       <input type="text" name="userName" ng-model="user.name" required>
+    </label>
+					<div role="alert">
+						<span class="error" ng-show="myForm.userName.$error.required">
+       Required!</span>
+					</div>
+					<label>
+       Last name:
+       <input type="text" name="lastName" ng-model="user.last"
+       ng-minlength="3" ng-maxlength="10">
+    </label>
+					<div role="alert">
+						<span class="error" ng-show="myForm.lastName.$error.minlength">
+        Too short!</span>
+						<span class="error" ng-show="myForm.lastName.$error.maxlength">
+        Too long!</span>
+					</div>
+				</form>
+			</div>
+			<hr>
+			<tt>user = {{user}}</tt><br/>
+			<tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br/>
+			<tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br/>
+			<tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br/>
+			<tt>myForm.lastName.$error = {{myForm.lastName.$error}}</tt><br/>
+			<tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+			<tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+			<tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt><br/>
+			<tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt><br/>
+			<hr />
+			<label>Value1:
+    <input type="checkbox" ng-model="checkboxModel.value1">
+  </label><br/>
+			<label>Value2:
+    <input type="checkbox" ng-model="checkboxModel.value2"
+           ng-true-value="'YES'" ng-false-value="'NO'">
+   </label><br/>
+			<tt>value1 = {{checkboxModel.value1}}</tt><br/>
+			<tt>value2 = {{checkboxModel.value2}}</tt><br/>
+		</div>
+		<script>
+			window.addEventListener('DOMContentLoaded', function(ev) {
+				console.dir(ev)
+				ev.stopPropagation();
+				ev.preventDefault();
+				ev.stopImmediatePropagation()
+			}, true);
+			window.addEventListener('load', function(ev) {
+				console.dir(ev)
+				ev.stopPropagation();
+				ev.preventDefault();
+				ev.stopImmediatePropagation()
+			}, true)
+			angular.module('inputExample', [])
+				.controller('ExampleController', ['$scope', function($scope) {
+					$scope.user = {
+						name: 'guest',
+						last: 'visitor'
+					};
+					$scope.show = true;
+					$scope.checkboxModel = {
+						value1: 1,
+						value2: 'YES'
+					};
+				}]);
+		</script>
+	</body>
+
+</html>

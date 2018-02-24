@@ -1,0 +1,11 @@
+<div class="container-wrapper">
+  <div class="nav_view">
+    <my-virtual-list ui-data-provider="dataProvider" can-resize="" row-height="64" ui-on-select="onSelect(option)" ng-model="selectedOption"></my-virtual-list>
+  </div>
+  <div class="content_view">
+  	<div>当前选中的数据</div>
+    <div class="selectedOption">
+      {{selectedOption | json}}
+    </div>
+  </div>
+</div>

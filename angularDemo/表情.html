@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAkCAYAAABIdFAMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHhJREFUeNo8zjsOxCAMBFB/KEAUFFR0Cbng3nQPw68ArZdAlOZppPFIBhH5EAB8b+Tlt9MYQ6i1BuqFaq1CKSVcxZ2Acs6406KUgpt5/LCKuVgz5BDCSb13ZO99ZOdcZGvt4mJjzMVKqcha68iIePB86GAiOv8CDADlIUQBs7MD3wAAAABJRU5ErkJggg=="/>
+		<label>Select Two Fish:</label>
+		<input type="checkbox" ng-model="isTwoFish"><br/>
+		<select>
+			<option>One Fish</option>
+			<option ng-selected="isTwoFish">Two Fish</option>
+		</select>
+		<h1>top</h1>
+		<pre ng-bind-html="code ">
+		</pre>
+		<h1>bttoom</h1>
+		<pre contenteditable="">fsdfsdf
+		 hell
+		</pre>
+		<span>ssdf <span>1231</span></span>
+		<div ng-bind-html="code"></div>
+		<script type="text/javascript">
+			angular.module('app', ['ngSanitize'])
+				.controller('myCtrl', function($scope) {
+					$scope.code = "<span class=\"emoji emoji1f389\"></span><span class=\"emoji emoji1f639\"></span>"
+				})
+				.filter('filterBr', function() {
+					return function(inp, opt) {
+						var reg = /(&lt;br*&gt;)/;
+						var str = '&lt;br/&gt;';
+						str.replace(reg, '$1=<br />');
+						return str
+					}
+				})
+		</script>
+	</body>
+
+</html>

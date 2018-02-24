@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>时间组件</title>
+		<script src="lib/jQuery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/angular.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datetimepicker.css" />
+		<script src="lib/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/datePickerDirc/datePicker.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.pull-left {
+				float: left;
+			}
+			.m-l-10{
+				margin-left: 10px;
+			}
+			.form-control {
+				width: 200px;
+				display: block;
+				height: 20px;
+				padding: 6px 12px;
+				font-size: 14px;
+				line-height: 1.42857143;
+				color: #555;
+				background-color: #fff;
+				background-image: none;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+				transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			}
+			
+			.clearfix {
+				overflow: auto;
+			}
+			
+			.box {
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			.form-control {
+				cursor: not-allowed;
+				background-color: #eee;
+			}
+			
+			.btn {
+				display: inline-block;
+				padding: 6px 12px;
+				margin-bottom: 0;
+				font-size: 14px;
+				font-weight: normal;
+				line-height: 1.42857143;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				touch-action: manipulation;
+				cursor: pointer;
+				background-image: none;
+				border: 1px solid transparent;
+				border-radius: 4px;
+				background-color: #00aaee;
+				color: #fff;
+			}
+			
+			.btn:hover {
+				background-color: #059dda;
+				color: #fff;
+			}
+			
+			.btn:active{
+				background-image: none;
+				outline: 0;
+				box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+			}
+		</style>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="ctrl" class="box">
+			<h3>请选择时间</h3>
+			<div style="margin-bottom: 20px;" reset="1" date-component time-range="10" time-format="yyyy-mm-dd" time-type='' ng-model="dateArea"></div>
+			<div style="margin-bottom: 20px;" ng-click="click()">点击输出数据模型</div>
+			<div>开始时间：{{dateArea.startTime}}</div>
+			<div>结束时间：{{dateArea.endTime}}</div>
+		</div>
+		<script type="text/javascript">
+			angular.module('app', ['forDate'])
+				.controller('ctrl', function($scope, $filter) {
+					window.dateFilter = $filter('date');
+					var time = new Date();
+					$scope.dateArea = {
+						endTime: dateFilter(time, 'yyyy-MM-dd'),
+						startTime: dateFilter(time.setDate(time.getDate() - 7), 'yyyy-MM-dd')
+					}
+					$scope.click = function() {
+						console.dir($scope)
+					}
+				})
+		</script>
+	</body>
+
+</html>

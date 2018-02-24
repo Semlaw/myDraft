@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.editArea {
+				background-color: #EEEEEE;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/face.css" />
+	</head>
+
+	<body>
+		<input type="text" />
+		<div ng-controller="commentEmojiCtrl" class="" style="relative">
+			<article class="editArea" style="height: 100px;" name="comment" contenteditable="true" class="form-control text-left editComment border-radius-0" ng-keydown="commentkeydownClick($event)" ng-keyup="commentkeyUpClick($event)" ng-click="getEditArea($event)" ng-paste="commentpaste()" ng-model='comment' id="chatEditArea"></article>
+			<div ng-bind="calcLength(comment)"></div>
+			<div class="qqemojiBox issueQQ pull-left">
+				<div ng-controller="emojiFaceCtrl" class="wxFace">
+					<a class="conface" id="faceShow" ng-click="emojiBtn($event)">表情</a>
+					<button id="sendBtn">发送</button>
+					<div class="emojiPanel" id="emojiPanel" ng-show="isShow" ng-click="panel($event)">
+						<ul class="expHd">
+							<li class="expHdItem active">
+								<a>表情</a>
+							</li>
+						</ul>
+						<div class="facebox">
+							<div class="qq_face">
+								<a class="face pull-left" id="emoji" ng-repeat="list in QQFaceMap" title="{{list.text}}" type="qq" ng-class="'qqface'+list.id" ng-click="selectFace(list,$event)"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/faceApp.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

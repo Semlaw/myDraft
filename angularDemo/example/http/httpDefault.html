@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div ng-app="app">
+			<div id="div"></div>
+		</div>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('app', [])
+				.config(function($httpProvider, $cacheFactoryProvider) {
+					console.dir($httpProvider.defaults.transformRequest);
+					console.dir($httpProvider)
+					console.dir($httpProvider.defaults);
+					$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+					$httpProvider.defaults.headers.common['Cache-Control'] = 'no-cache';
+					$httpProvider.defaults.transformRequest = [function(obj) {
+						console.dir(arguments)
+						var str = [];
+						for(var s in obj) {
+							str.push(encodeURIComponent(s) + "=" + encodeURIComponent(obj[s]));
+						}
+						return str.join("&");
+					}];
+					$httpProvider.interceptors.push('myInterceptor');
+				})
+				.factory('myInterceptor', function($q) {
+					var interceptor = {
+						'request': function(config) {
+							// 成功的请求方法
+							console.dir(config)
+							if(config.method.toUpperCase() === 'GET') {
+								if(config.param&&config.url.indexOf('?')===-1) {
+									alert('set url')
+									var str = [];
+									var obj = config.param;
+									for(var s in obj) {
+										str.push(encodeURIComponent(s) + "=" + encodeURIComponent(obj[s]));
+									};
+									str ='?'+str.join('&');
+									config.url+=str;
+								}
+							}
+							return config; // 或者 $q.when(config);
+						},
+						'response': function(response) {
+							// 响应成功
+							console.dir(response)
+							return response; // 或者 $q.when(config);
+						},
+						'requestError': function(rejection) {
+							// 请求发生了错误，如果能从错误中恢复，可以返回一个新的请求或promise
+							console.dir(rejection)
+							return response; // 或新的promise
+							// 或者，可以通过返回一个rejection来阻止下一步
+							// return $q.reject(rejection);
+						},
+						'responseError': function(rejection) {
+							console.dir(rejection)
+							// 请求发生了错误，如果能从错误中恢复，可以返回一个新的响应或promise
+							return rejection; // 或新的promise
+							// 或者，可以通过返回一个rejection来阻止下一步
+							// return $q.reject(rejection);
+						}
+					};
+					return interceptor;
+				});
+			setTimeout(function() {
+				var div = document.getElementById('div');
+				window.http = angular.element(div).injector().get('$http');
+			}, 2000)
+		</script>
+	</body>
+
+</html>

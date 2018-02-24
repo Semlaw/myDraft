@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			pre {
+				border: 1px solid gray;
+				height: 90px;
+			}
+		</style>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<textarea name="" rows="" cols="" ></textarea>
+		<input type="text" value="abcde" />
+		<script type="text/javascript">
+		</script>
+		<article contenteditable="">this is article</article>
+		<pre contenteditable="true">
+			hello
+			&amp;
+		</pre>
+		<pre id="editArea" contenteditable="" ng-keydown="editAreaKeydown($event)" ng-keyup="editAreaKeyup($event)"></pre>
+		<span>ssdf <span>1231</span></span>
+		<div ng-bind-html="code"></div>
+		<div>
+			<input ng-disabled="true" ng-click="click($event)" type="button" name="" id="ipt" value="input按钮" />
+			<button ng-disabled="true" ng-click="click($event)" id="btn">按钮</button>
+		</div>
+		<script type="text/javascript">
+			angular.module('app', ['ngSanitize'])
+				.controller('myCtrl', function($scope) {
+					$scope.isCtrlDown = false;
+					$scope.click = function(ev){
+						console.dir(ev)
+					}
+					$scope.editAreaKeyup = function(ev) {
+						//						console.dir(ev)
+						//						if(ev.key == 'Control' || ev.keyCode == 17) {
+						//							$scope.isCtrlDown = false;
+						//							console.dir('ctrl up')
+						//						}
+					}
+					$scope.editAreaKeydown = function(ev) {
+						if(ev.keyCode == 13 && ev.ctrlKey) {
+//							var editArea = document.getElementById('editArea')
+//							var cursor = editArea.getSelection
+//							var ctn = editArea.selectionDirection
+//							console.log(ctn)
+//							console.log(cursor)
+							console.dir(window.getSelection())
+						}
+
+					}
+					$scope.editAreaClick = function() {
+
+					}
+				})
+		</script>
+		<script type="text/javascript">
+			var str = "13fsdfs";
+			console.log(str)
+		</script>
+	</body>
+
+</html>

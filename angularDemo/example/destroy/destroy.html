@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/jQuery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/angular.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datetimepicker.css" />
+		<script src="lib/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/datePickerDirc/datePicker.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="myCtrl">
+			<button ng-click="toggle()">click</button>
+			<div ng-if="show">
+				<div ng-controller="bCtrl">
+					<div>a input elment</div>
+					<input readonly="" init-date type="text" />
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			angular.module('app', [])
+				.controller('myCtrl', function($scope) {
+					$scope.show = true
+					$scope.toggle = function() {
+						$scope.show = !$scope.show;
+					}
+					$scope.$on('$destroy', function(ev) {
+						console.dir(ev)
+					})
+				})
+				.controller('bCtrl', function($scope) {
+					$scope.$on('$destroy', function(ev) {
+						console.dir(ev)
+					})
+				})
+				.directive('initDate', function(getID) {
+					return {
+						restrict: 'A',
+						link: function(scope, elem, attrs) {
+							var format = scope.timeFormat || "yyyy-MM-dd";
+							var options = {
+								format: format,
+								language: "zh-CN",
+								autoclose: true,
+								todayBtn: true,
+								minView: 2,
+								pickerPosition: "bottom-right"
+							};
+							console.dir(elem)
+							elem.datetimepicker(options);
+							var last = $('body .datetimepicker:last-child')
+							console.dir(last)
+							elem.attr({
+								id: "myPiker" + getID()
+							})
+							scope.$on('$destroy', function() {
+								last.remove();
+								last = null;
+							})
+						}
+					}
+				})
+				.factory('getID', function() {
+					var num = 0;
+					return function() {
+						return ++num;
+					}
+				})
+		</script>
+	</body>
+
+</html>

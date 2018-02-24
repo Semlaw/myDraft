@@ -1,0 +1,401 @@
+群
+[
+  {
+    "userName": "@@a7ec916f7484dc8b279b01b98dd019c4230ef79bf4445587f4cb995d649e5224",
+    "cId": 1,
+    "isOwner": "0",
+    "member": "{\"memberUsers\":\"[{\"userName\":\"@e14ceb8a6a7d6973142b0213fb7776debe1b20f23f22cd289c27de9bfacfea39\",\"memberUsers\":null,\"nickName\":\"爱佳\",\"headImgUrl\":null},{\"userName\":\"@966327ce57adb9e01fadda80ad636e1d0809c08e507c9b3d5dd48b45bf97df89\",\"memberUsers\":null,\"nickName\":\"是我51\",\"headImgUrl\":null}]\"}",
+    "memberIsInit": 0,
+    "cgId": 1,
+    "memberCount": "2",
+    "nickName": "爱佳,我又不特别sjsjsjsjan",
+    "headImgUrl": "file:///D:/51zan\\my_file\\1_@@a7ec916f7484dc8b279b01b98dd019c4230ef79bf4445587f4cb995d649e5224.png",
+    "chatStatus": 1
+  }
+]
+
+好友
+[
+    {
+        "userName": "@4be89d1a7328577c827dca11f5fb3648",
+        "cId": 1,
+        "cuId": 91,
+        "remarkName": "18658807725",
+        "nickName": "吴彬斌",
+        "headImgUrl": "file:///D:/51zan\\my_file\\0_@4be89d1a7328577c827dca11f5fb3648.png",
+        "sex": 1,
+        "province": "浙江",
+        "city": "杭州",
+        "chatStatus": 1,
+        "pyInitial": "WBB"
+    }
+]
+
+群成员信息
+
+{
+  "memberUsers": [
+    {
+      "userName": "@91394377278f39cdb790a0b0f1b98d7c5fe22e2e6e3efe5a383e186fb2b24c68",
+      "memberUsers": null,
+      "nickName": "爱佳",
+      "headImgUrl": "file:///D:/51zan\\my_file\\0_@91394377278f39cdb790a0b0f1b98d7c5fe22e2e6e3efe5a383e186fb2b24c68.png"
+    },
+    {
+      "userName": "@4fe410717b4de874d41d7344c280ba92899a7da53d729836238de54f8da035d9",
+      "memberUsers": null,
+      "nickName": "我又不特别",
+      "headImgUrl": "file:///D:/51zan\\my_file\\0_@4fe410717b4de874d41d7344c280ba92899a7da53d729836238de54f8da035d9.png"
+    }
+  ]
+}
+
+发来一条群消息
+
+{
+   "rm":
+   {
+      "content":"[
+         尴尬
+      ]
+[
+         尴尬
+      ]
+",
+      "mediaUrl":null,
+      "userName":null,
+      "msgType":1,
+      "fromUserName":"@0892b0c1192d82f72a815b94bc45297d2d5557cfd4816646ff1c6275311469ff",
+      "msgId":"3837520969059413306",
+      "nickName":null,
+      "headImgUrl":null,
+      "imgWidth":null,
+      "voiceLength":0,
+      "imgHeight":null,
+      "createTime":"2017-03-20 14:54:55"
+   },
+   "msg":null,
+   "rd":
+   {
+      "memberUser":null,
+      "clId":2,
+      "chatUser":
+      {
+         "userName":"@0892b0c1192d82f72a815b94bc45297d2d5557cfd4816646ff1c6275311469ff",
+         "nickName":"我又不特别",
+         "typeFlag":0,
+         "cuId":146,
+         "chatStatus":1,
+         "cId":1,
+         "headImgUrl":"file:///D:/51zan\\my_file\\0_@0892b0c1192d82f72a815b94bc45297d2d5557cfd4816646ff1c6275311469ff.png",
+         "province":"",
+         "sex":2,
+         "remarkName":"是我51",
+         "pyInitial":"WYBTB",
+         "city":""
+      },
+      "chatGroup":null
+   },
+   "ret":null,
+   "msgId":null,
+   "localId":null,
+   "cId":1
+}
+
+
+好友发来一条消息
+{
+  "uin": 31148870,
+  "ret": null,
+  "rd": {
+    "chatId": 1,
+    "chatUser": {
+      "id": 164,
+      "status": 1,
+      "uin": 31148870,
+      "userName": "@a1f4160087733a15ed736cd5fb22a7483f0617c50bfb6fa51e9593b3104dc7df",
+      "headImgUrl": "/cgi-bin/mmwebwx-bin/webwxgeticon?seq=677946072&username=@a1f4160087733a15ed736cd5fb22a7483f0617c50bfb6fa51e9593b3104dc7df&skey=@crypt_52ca1ba1_2800a3922397005496fe19a1f338dc3e",
+      "remarkName": "51赞CRM  急急急",
+      "nickName": "51赞CRM",
+      "province": "",
+      "sex": 2,
+      "pyInitial": "51ZCRM",
+      "city": ""
+    },
+    "chatGroup": null
+  },
+  "rm": {
+    "content": "啊啊啊",
+    "mediaUrl": null,
+    "fromUserName": "@a1f4160087733a15ed736cd5fb22a7483f0617c50bfb6fa51e9593b3104dc7df",
+    "msgId": "3514050304560050796",
+    "createTime": "1970-01-18 13:44:44",
+    "msgType": 1,
+    "voiceLength": "0"
+  },
+  "errMsg": null
+}
+
+修改备注 返回的信息
+
+Object
+成功时
+{
+ "msgId":null,
+   "ret":0,
+   "localId":null,
+   "rm":null,
+   "msg":null,
+   "rd":null,
+   "cId":null
+}
+
+聊天列表
+
+{
+   "chatGroups":
+   [
+      {
+         "userName":"@@64351a1ffb5acae1b9a7bd39e8deca69c1d7f6659cf4a643f7b2869a0f958765",
+         "member":"{
+            \"memberUsers\":\"[
+               {
+                  \"userName\":\"@644e6064c41944ca7cf2ee53831a5bab94486e3b2896f60dbb37b57fafe4c7c3\",
+                  \"memberUsers\":null,
+                  \"nickName\":\"爱佳\",
+                  \"headImgUrl\":null
+               },
+               {
+                  \"userName\":\"@1a1c4d4aa20129676cb184bc1aa7db3d4f1a3e69776bab09821e21d7673cebbf\",
+                  \"memberUsers\":null,
+                  \"nickName\":\"是我51\",
+                  \"headImgUrl\":null
+               }
+
+            ]
+\"
+         }
+",
+         "isChating":1,
+         "typeFlag":1,
+         "memberCount":"2",
+         "nickName":"新改的群名 哈哈哈2017/30/2",
+         "isOwner":"0",
+         "headImgUrl":"/cgi-bin/mmwebwx-bin/webwxgetheadimg?seq=677947171&username=@@64351a1ffb5acae1b9a7bd39e8deca69c1d7f6659cf4a643f7b2869a0f958765&skey=",
+         "memberIsInit":0,
+         "cgId":1,
+         "chatStatus":1,
+         "cId":1
+      }
+
+   ],
+   "chatUsers":
+   [
+      {
+         "userName":"@39abfcd6fd3a90215c95b97fa33c2512de4a2041ced7025849e57e9b55673e9d",
+         "city":"",
+         "pyInitial":"1",
+         "province":"",
+         "sex":2,
+         "remarkName":"是我51",
+         "isChating":null,
+         "typeFlag":0,
+         "nickName":"我又不特别",
+         "headImgUrl":"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=677946633&username=@39abfcd6fd3a90215c95b97fa33c2512de4a2041ced7025849e57e9b55673e9d&skey=@crypt_52ca1ba1_54795ff6c43c996e6ea2e6891c4b5ae2",
+         "chatStatus":1,
+         "cuId":141,
+         "cId":1
+      },
+      {
+         "userName":"@69a3197f14145798ee63b5914232d0c9fc3aeda011cf3e9bfab87e9dd8f1a013",
+         "city":"",
+         "pyInitial":"1",
+         "province":"",
+         "sex":2,
+         "remarkName":"51赞CRM_s1",
+         "isChating":null,
+         "typeFlag":0,
+         "nickName":"51赞CRM",
+         "headImgUrl":"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=677946072&username=@69a3197f14145798ee63b5914232d0c9fc3aeda011cf3e9bfab87e9dd8f1a013&skey=@crypt_52ca1ba1_54795ff6c43c996e6ea2e6891c4b5ae2",
+         "chatStatus":1,
+         "cuId":163,
+         "cId":1
+      }
+
+   ]
+
+}
+
+发emoji <span class="emoji emoji1f60f"></span> <span class="emoji emoji1f612"></span> <span class="emoji emoji1f612"></span> 
+
+
+获取聊天记录
+
+public void getChatRecordsList(final String cId,final String cuId,final String cgId,final String pageNo,final String pageTotal,final JSFunction function)
+
+聊天记录
+
+  "pageTotal":0,
+   "chatRecords":
+   [
+      {
+         "content":"图咯啦咯啦咯",
+         "contentType":1,
+         "cgId":0,
+         "crType":1,
+         "cuId":163,
+         "updateTime":null,
+         "imgHeight":null,
+         "imgWidth":null,
+         "voiceLength":0,
+         "createTime":"2017-03-21 15:49:35",
+         "crId":1,
+         "pageNo":null,
+         "pageSize":null
+      }
+
+   ],
+   "pageNo":null,
+   "pageSize":10
+   
+撤回消息
+public void revokeMsg(final String cId,final String msgId,final String toUserName,
+			final JSFunction function)
+
+傅勇刚 2017/3/21 19:48:45
+拿ERP信息 传remarkname
+public void getErpInfo(final String phone,final JSFunction function)
+
+发图片回执
+
+{
+  "ret": 0,
+  "localId": "14903502529352992",
+  "msgId": "2074953633812730995",
+  "cId": 1,
+  "msg": null,
+  "rd": {
+    "memberUser": null,
+    "chatGroup": null,
+    "chatUser": {
+      "userName": "@0baa9a51c3385a7c17365f4cb7b7b48cc4709d5e020f85e149cab4eb6cfe9068",
+      "cId": 1,
+      "cuId": 20,
+      "nickName": "51赞CRM",
+      "province": "",
+      "city": "",
+      "chatStatus": 2,
+      "isChating": 0,
+      "sex": 2,
+      "pyInitial": "51ZCRM",
+      "headImgUrl": "file:///d:/51zan\\chat\\my_file\\0_@0baa9a51c3385a7c17365f4cb7b7b48cc4709d5e020f85e149cab4eb6cfe9068.png",
+      "typeFlag": 0,
+      "remarkName": "51赞CRM"
+    },
+    "sendImgUrl": "file:///d:/51zan\\chat\\my_chat_file\\1490350253469.png"
+  },
+  "rm": null
+}
+
+系统加好友信息
+{
+   "rm":
+   {
+   		"recommendInfo":{
+   			 "userName":"@c54c9ba5bfb74326440472115a6408c1dae09f4389d101a5541733a0f17d43c8",
+   			   "nickName":"JGGJNZTIVU",
+   			    "content":"我是急急急",
+   			    "ticket":"v2_8e8db91fa1115dc791870d99f90846223a05d65c6df6d333f6f0e52147dd35919767068769c10bf925817eb3a327fb0ff1b50a44bab97c8c19b754ba8336fa5d@stranger",
+   			     "headImgUrl":null,
+   		},
+     
+      "mediaUrl":null,
+      "modContactList":null,
+      "msgId":"3451839801637962979",
+      "msgType":37,
+      "fromUserName":"fmessage",
+      "contentTemp":"我是急急急",
+      "recommendInfo":null,
+      
+     
+      "voiceLength":0,
+      "imgHeight":null,
+      "createTime":"2017-03-24 20:47:24",
+      "imgWidth":null
+   },
+   "rd":
+   {
+      "memberUser":null,
+      "chatUser":null,
+      "chatGroup":null
+   },
+   "msgId":null,
+   "msg":null,
+   "localId":null,
+   "ret":null,
+   "cId":1
+}
+
+接受好友邀请的回执
+{
+   "rd":
+   {
+      "memberUser":null,
+      "chatUser":
+      {
+         "userName":"@f69a4f3420044dd1e140e636863f7d774c289a9bd24dcd9aaefa2fe87940a2ed",
+         "cId":1,
+         "sex":0,
+         "city":"",
+         "typeFlag":0,
+         "remarkName":"EJTHRX",
+         "province":"",
+         "headImgUrl":"file:///d:/51zan\\chat\\my_file\\0_@f69a4f3420044dd1e140e636863f7d774c289a9bd24dcd9aaefa2fe87940a2ed.png",
+         "cuId":null,
+         "pyInitial":"EJTHRX",
+         "isChating":null,
+         "chatStatus":0,
+         "nickName":"EJTHRX"
+      },
+      "chatGroup":null
+   },
+   "rm":null,
+   "msg":null,
+   "ret":0,
+   "localId":null,
+   "msgId":null,
+   "cId":null
+}
+
+发消息回执
+
+{
+   "ret":0,
+   "localId":"14904330096249626",
+   "msgId":"9148831222783759254",
+   "msg":null,
+   "cId":1,
+   "rd":
+   {
+      "chatUser":
+      {
+         "userName":"@b0999df6f7bdb372467f49c8ff01d42c3f9b4b0f52718e372fca4e54733ff433",
+         "cId":1,
+         "typeFlag":0,
+         "sex":0,
+         "chatStatus":2,
+         "province":"",
+         "cuId":31,
+         "isChating":0,
+         "remarkName":"JGGJNZTIVU",
+         "city":"",
+         "headImgUrl":"file:///d:/51zan\\chat\\my_file\\0_@b0999df6f7bdb372467f49c8ff01d42c3f9b4b0f52718e372fca4e54733ff433.png",
+         "pyInitial":"JGGJNZTIVU",
+         "nickName":"JGGJNZTIVU"
+      },
+      "memberUser":null,
+      "chatGroup":null
+   },
+   "rm":null
+}
+

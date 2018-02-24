@@ -1,0 +1,51 @@
+getUserCardInfo 返回的数据
+{
+   "isOwner":0,
+   "sex":0,
+   "userName":"@d7a587d71981fb7c4291ceb21f26269e5add7a54050007f4979bde7ceba8a26c",
+   "province":"",
+   "city":"",
+   "starFriend":0,
+   "friend":false,
+   "nickName":"2要找淘宝商品@我，让你卷后省哭",
+   "keyWord":"",
+   "memberCount":0,
+   "remarkName":"",
+   "mute":false,
+   "pyInitial":"2YZTBSPWRNJHSK",
+   "pyQuanPin":null,
+   "memberList":
+   [
+      
+   ],
+   "contactList":null,
+   "headImgUrl":"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=0&username=@d7a587d71981fb7c4291ceb21f26269e5add7a54050007f4979bde7ceba8a26c&chatroomid=@87ed896559be8e5ab51a1a60df1c58f3&skey=",
+   "remarkPYInitial":"",
+   "remarkPYQuanPin":"",
+   "memberIsInit":null,
+   "chatContact":null
+}
+右侧群中某一个人的信息
+{
+   "friend":false,
+   "starFriend":null,
+   "userName":"@2b4efc2df8775109556f319535b11dde",
+   "city":null,
+   "province":null,
+   "contactList":null,
+   "headImgUrl":null,
+   "memberList":null,
+   "isOwner":null,
+   "sex":null,
+   "nickName":"君邪",
+   "keyWord":"qq8",
+   "memberCount":null,
+   "remarkName":null,
+   "memberIsInit":null,
+   "chatContact":null,
+   "mute":false,
+   "remarkPYInitial":"",
+   "remarkPYQuanPin":"",
+   "pyInitial":"",
+   "pyQuanPin":null
+}

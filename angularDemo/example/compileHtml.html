@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/angular1.45.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="someCtrl">
+			<h4 ng-bind="value"></h4>
+			<div>
+				<h4>ng-bind-html="htmlValue()"</h4>
+				<div class="container" ng-bind-html="htmlValue()">
+
+				</div>
+			</div>
+			<div>
+				<h3>compileBindHtml</h3>
+				<div class="container" compile-bind-html="tpl">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var tpl = `<div>
+	<span ng-bind="value"></span>
+	<div ng-click="click()">按钮</div>
+</div>`;
+			angular.module('app', [])
+				.controller('someCtrl', function($scope, $sce) {
+					$scope.value = 'hello world';
+					$scope.click = function() {
+						console.log('execute click function')
+					};
+					$scope.tpl = tpl
+					$scope.htmlValue = function() {
+						return $sce.trustAsHtml(tpl)
+					}
+				})
+				.directive('compileBindHtml', function($compile) {
+					var directive = {
+						restrict: 'AE',
+						link: linkFunc
+					};
+					return directive;
+
+					function linkFunc(scope, elements, attrs) {
+						var func = function() {
+							var val = scope.$eval(attrs.compileBindHtml)
+							console.dir(val)
+							return val;
+						};
+						scope.$watch(func, function(newValue) {
+							console.dir(newValue)
+							elements.html(newValue);
+							console.dir(elements)
+							$compile(elements.contents())(scope);
+						})
+					}
+				})
+		</script>
+	</body>
+
+</html>

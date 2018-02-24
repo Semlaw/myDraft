@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="App">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				height: 100%;
+			}
+			
+			md-virtual-repeat-container {
+				height: 500px;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				position: absolute;
+				width: 100%;
+				background-color: #999999;
+			}
+			
+			md-virtual-repeat-container:-webkit-scrollbar {
+				width: 0 !important;
+			}
+			
+			.header {
+				background-color: deepskyblue;
+				height: 40px;
+			}
+			.user{
+				background-color: green;
+				border-bottom: 1px solid yellow;
+				box-sizing: border-box;
+			}
+			h5{
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<md-virtual-repeat-container class="container" md-top-index="topIndex">
+			<div class="listItem" md-virtual-repeat="item in items " ng-class="{'header':item.isHeader,'user':!item.isHeader}" ng-show="calc($index,item)" my-directive="calc($index,item)" data-javasrc="{{item.src}}">
+				
+					<h5 ng-show="item.isHeader" ng-bind="item.pyInitial"></h5>
+					<div ng-show="!item.isHeader" >
+						<div class="avatar">
+							<img width="35" height="35" ng-src="{{item.avatarUrl}}" src='./img/2KriyDK.png' class="user-avatar" />
+						</div>
+						<div class="contacts-user-infos f-14">
+							<h5 title=" {{item.remarkName }}" class="user-infos"><span ng-bind="item.nickName  "></span><span ng-show="item.chatContact.chatStatus == 1">/({{item.remarkName }})</span></h5>
+						</div>
+					</div>
+				
+				<!--<div ng-click="itemClick(item)" ng-dblclick="itemDbClick(item.nickName)">Hello {{item.pyInitial}}! <span style="color: red;">{{$index}}</span></div>-->
+				<!--<div ng-repeat="item in items">hello{{item.index}}</div>-->
+			</div>
+		</md-virtual-repeat-container>
+		<script src="js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="md-virtual-repeater/virtual-repeater.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mock.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var arr = []
+			for(let i = 0; i < 150; i++) {
+				var temp = {
+					index: i,
+					userName: 'src' + i
+				}
+				arr.push(temp)
+			}
+
+			var getImg = function() {
+				$('.listItem').each(function() {
+					this.setAttribute('data-src', this.getAttribute('data-javasrc')) // this.getAttribute('data-javasrc'))
+				})
+			}
+
+			angular.module('App', ['virtualRepeat'])
+				.controller('myCtrl', function($scope, $timeout, orderByFilter, makeContactsHeader) {
+
+					$scope.calc = function(idx, item) {
+						if(item.src == undefined) {
+							item.src = '@' + idx
+						}
+						return true
+					}
+					$scope.itemClick = function(aInfo) {
+						console.dir(aInfo)
+
+					}
+					$scope.itemDbClick = function(name) {
+						alert(name)
+					}
+					var hasHeader = makeContactsHeader(userList)
+					var temp = orderByFilter(hasHeader, ['pyInitial', 'isHeader'])
+					console.dir(temp)
+
+					$scope.items = temp
+						//					$timeout(function(){
+						//						console.dir($('.md-virtual-repeat-scroller'))
+						//						$('.md-virtual-repeat-scroller').scroll(function(){
+						//							getImg()
+						//						})
+						//					},100)
+				})
+				.directive('myDirective', function() {
+					return {
+						restrict: 'A',
+						replace: true
+					};
+				})
+				.factory('makeContactsHeader', function() {
+					return function(contacts) {
+						if(!contacts) {
+							return contacts
+						}
+						var header = {}
+						for(let aInfo of contacts) {
+							if(aInfo.isHeader) {
+								header[aInfo.pyInitial] = true;
+							}
+						}
+						for(let aInfo of contacts) {
+							let py = aInfo.pyInitial
+							if(py) {
+								let alphabet = py.substring(0, 1)
+								if(!isNaN(alphabet)) {
+									aInfo.pyInitial = '~_';
+									if(!header['~']) {
+										header['~'] = true
+										var temp = {
+											isHeader: true,
+											pyInitial: '~',
+											userName: 'header_~'
+										}
+										contacts.unshift(temp)
+									}
+									continue;
+								}
+								if(alphabet == '?') {
+									aInfo.pyInitial = '~_';
+									if(!header['~']) {
+										header['~'] = true
+										var temp = {
+											isHeader: true,
+											pyInitial: '~',
+											userName: 'header_~'
+										}
+										contacts.unshift(temp)
+									}
+									continue;
+								}
+								if(!header[alphabet]) {
+									header[alphabet] = true
+									var temp = {
+										isHeader: true,
+										pyInitial: alphabet,
+										userName: 'header_' + alphabet
+									}
+									contacts.unshift(temp)
+								}
+							} else {
+								aInfo.pyInitial = '~_';
+								if(!header['~']) {
+									header['~'] = true
+									var temp = {
+										isHeader: true,
+										pyInitial: '~',
+										userName: 'header_~'
+									}
+									contacts.unshift(temp)
+								}
+							}
+						}
+						header = null;
+						return contacts;
+					}
+				})
+		</script>
+	</body>
+
+</html>

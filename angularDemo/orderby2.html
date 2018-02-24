@@ -1,0 +1,104 @@
+<html ng-app='app'>
+
+	<head>
+		<title>order by</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="table-responsive" ng-controller="demoController">
+			<table id="tb" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-2">编号</th>
+						<th class="col-md-4">国家</th>
+						<th class="col-md-4">名称</th>
+						<th class="col-md-3">年龄</th>
+					</tr>
+				</thead>
+				<tbody id="tbody" ng-repeat="(key,stu) in data | orderBy : 'age' | limitTo: 10">
+					<tr class="{{ cls($index) }}">
+						<td>{{ $index + 1 }}</td>
+						<td>{{ stu.country }}</td>
+						<td>{{ stu.name }}</td>
+						<td>{{ stu.age }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script type="text/javascript">
+			angular.module('app', [])
+				.controller('demoController', function($scope) {
+					$scope.data = [{
+						seq: 1,
+						name: "魏国",
+						country: "曹操",
+						age: 45
+					}, {
+						seq: 2,
+						name: "魏国",
+						country: "张辽",
+						age: 34
+					}, {
+						seq: 3,
+						name: "魏国",
+						country: "司马懿",
+						age: 36
+					}, {
+						seq: 4,
+						name: "魏国",
+						country: "夏侯淳",
+						age: 40
+					}, {
+						seq: 5,
+						name: "蜀国",
+						country: "刘备",
+						age: 50
+					}, {
+						seq: 6,
+						name: "蜀国",
+						country: "关羽",
+						age: 45
+					}, {
+						seq: 7,
+						name: "蜀国",
+						country: "张飞",
+						age: 46
+					}, {
+						seq: 8,
+						name: "蜀国",
+						country: "赵云",
+						age: 35
+					}, {
+						seq: 9,
+						name: "吴国",
+						country: "孙权",
+						age: 30
+					}, {
+						seq: 10,
+						name: "吴国",
+						country: "周瑜",
+						age: 32
+					}, {
+						seq: 11,
+						name: "吴国",
+						country: "鲁肃",
+						age: 33
+					}, {
+						seq: 12,
+						name: "吴国",
+						country: "黄盖",
+						age: 55
+					}];
+					$scope.cls = function(i) {
+						return(i + 1) % 4 == 1 ? "active" : "";
+					}
+				})
+				//       function demoController($scope,$window) {
+				//
+		</script>
+	</body>
+
+</html>

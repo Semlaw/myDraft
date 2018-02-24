@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/angular1.45.js" type="text/javascript" charset="utf-8"></script>
+		<script src="echarts-2.2.7/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#orderLine {
+				width: 700px;
+				height: 400px;
+			}
+		</style>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="ctrl">
+			<div id="orderLine">
+
+			</div>
+			<h4 ng-bind="num"></h4>
+			<h4 ng-bind="num |number:2"></h4>
+			<input type="text" ng-change="change()" ng-model="ipt" ng-model-options="{debounce:200}" name="ipt" id="ipt" value="all ok" />
+			<div>{{ipt}}</div>
+		</div>
+		<script type="text/javascript">
+			var app = angular.module('app', []);
+
+			app.provider('movie', function() {
+				var version;
+				return {
+					setVersion: function(value) {
+						version = value;
+					},
+					$get: function() {
+						return {
+							title: 'The Matrix' + ' ' + version
+						}
+					}
+				}
+			});
+			app.factory('title', function() {
+				return {
+					title: 'The Matrix'
+				}
+			});
+
+			app.config(function(movieProvider) {
+				movieProvider.setVersion('Reloaded');
+				console.dir(movieProvider)
+			});
+
+			app.controller('ctrl', function(movie, $scope, forChartData) {
+					console.dir(movie)
+					$scope.num = 12.232323232323
+					var myLine = echarts.init(document.getElementById('orderLine'));
+					var optionLine = `{"2017-03":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"},"2017-04":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"},"2017-05":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"},"2017-06":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"},"2017-07":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"},"2017-08":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"},"2017-09":{"countDate":1505059200000,"paymentAvg":19007,"paymentAvgYuan":"190.07","paymentCount":27,"paymentCustomer":22,"paymentSum":561232,"paymentSumYuan":"5612.32","repeatPercent":10.475,"sellerNick":"亲情无价90","userId":"05ec5de9-279b-4150-afc1-faa88ba73466"}}`;
+					optionLine = JSON.parse(optionLine);
+					optionLine = forChartData(optionLine);
+					console.dir(optionLine)
+					myLine.setOption(optionLine);
+					$scope.change = function() {
+						console.log('change')
+					}
+					//				expect(movie.title).toEqual('The Matrix Reloaded');
+				})
+				.factory('forChartData', [function() {
+					var nameMap = {
+						paymentCount: '付款订单',
+						paymentSum: '付款金额',
+						paymentCustomer: '付款客户',
+						paymentAvgYuan: '客单价',
+						repeatPercent: '复购率'
+					}
+					return function(datas) {
+						var option = {
+							title: {
+								text: '订单数'
+							},
+							tooltip: {
+								trigger: 'axis'
+							},
+							legend: {
+								data: []
+							},
+							grid: {
+								left: '3%',
+								right: '4%',
+								bottom: '3%',
+								containLabel: true
+							},
+							toolbox: {
+								feature: {
+									saveAsImage: {}
+								}
+							},
+							xAxis: {
+								type: 'category',
+								boundaryGap: false,
+								data: []
+							},
+							yAxis: {
+								type: 'value'
+							},
+							series: []
+						};
+						for(var k in nameMap) {
+							option.legend.data.push(nameMap[k]);
+							var temp = {
+								name: nameMap[k],
+								type: 'line',
+								stack: '总量',
+								data: []
+							};
+							for(time in datas) {
+								temp.data.push(datas[time][k] || 0);
+							}
+							option.series.push(temp);
+						};
+						for(var time in datas) {
+							option.xAxis.data.push(time);
+						}
+						return option
+					}
+				}])
+		</script>
+	</body>
+
+</html>

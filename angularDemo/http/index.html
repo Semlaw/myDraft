@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="myCtrl"></div>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular
+				.module('app', [])
+				.config(['$httpProvider', function($httpProvider) {
+
+					$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+					$httpProvider.defaults.transformRequest = [function(obj) {
+						console.log(arguments)
+						var str = [];
+						if(typeof obj === 'string') {
+							return obj;
+						}
+
+						for(var s in obj) {
+							str.push(encodeURIComponent(s) + "=" + encodeURIComponent(obj[s]));
+						}
+						return str.join("&");
+					}];
+				}])
+				.controller('myCtrl', function($http) {
+					console.log($http)
+					$http({
+						url: '/api/goods/saveUpdate',
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+
+						},
+						processData:false,
+						data: JSON.stringify({
+							goods: {
+								name: 12
+							}
+						})
+					});
+				})
+		</script>
+	</body>
+
+</html>

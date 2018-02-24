@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="myCtrl" ng-keypress="press($event)">
+			<h3 ng-bind="arr | json"></h3>
+			<button ng-click="click()">点击</button>
+			<h4>loaded {{loaded}}</h4>
+		</div>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('app', [])
+				.factory('apply', function($q, $rootScope, $timeout) {
+					return function() {
+						$rootScope.loaded = true;
+						var p1 = $q.defer();
+						var p2 = $q.defer();
+						setTimeout(function() {
+							p1.resolve('p1 resolve')
+						}, 2000)
+						setTimeout(function() {
+							p2.resolve('p2 reject')
+						}, 3000)
+						return $q.all([p1.promise, p2.promise])
+					}
+				})
+				.controller('myCtrl', function(apply, $scope, $rootScope, $timeout) {
+					$scope.press = function(ev) {
+						console.info(ev)
+						console.log('press')
+					}
+					$scope.num = 100;
+					$scope.arr = ['empty'];
+					$scope.click = function() {
+						apply().then(function() {
+							console.info(arguments);
+							console.log('then func1');
+							$scope.arr.push('then func1')
+							var deffer = $.Deferred();
+							setTimeout(deffer.reject, 1000)
+							return {
+								state: function() {
+									return 'rejected'
+								},
+								then(){
+									console.dir(arguments)
+								}
+							}
+						}).then(function() {
+							console.info(arguments)
+							console.log('then func2');
+							$scope.arr.push('then func2')
+						}).catch(function() {
+							console.info(arguments)
+							console.log('catch func1')
+							$scope.arr.push('catch func1')
+						}).catch(function() {
+							console.info(arguments)
+							console.log('catch func2')
+							$scope.arr.push('catch func2')
+						}).finally(function() {
+							console.info(arguments)
+							console.log('finally')
+							$rootScope.loaded = false;
+
+							$scope.arr.push('finally')
+						})
+					}
+				})
+		</script>
+	</body>
+
+</html>
