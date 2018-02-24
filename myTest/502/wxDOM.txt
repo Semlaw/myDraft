@@ -1,5 +1,0 @@
-span.nickname_text.ng-binding
-img.img
-div.chat_item.slide-left.ng-scope.active
-div.chat_item.slide-left.ng-scope.active
-data-username : filehelper
