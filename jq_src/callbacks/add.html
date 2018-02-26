@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var cb = $.Callbacks('memory');
+			
+			function func1(){
+				console.log('func1')
+				console.log(this)
+				console.log(arguments)
+				cb.add(func4)
+			}
+			function func2(){
+				console.log('func2')
+				console.log(this)
+				console.log(arguments)
+				cb.add(func4)
+			}
+			function func3(){
+				console.log('func3')
+				console.log(this)
+				console.log(arguments);
+			}
+			function func4(){
+				console.log('func4')
+				console.log(this)
+				console.log(arguments)
+			}
+			cb.add([func1,func2,func3])
+			// 回调函数组在firing时依然可以add,向list中add完函数后，需要更新firingLength的值为list.length;
+		</script>
+	</body>
+</html>

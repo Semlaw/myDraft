@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var Deferred = function() {
+				var doneList = [],
+					failList = [],
+					progressList = [],
+					status = 'pending';
+
+				var deffered = {
+					done: function(func) {
+						if(typeof func === 'function') {
+							doneList.push(func)
+						};
+						if(func instanceof Array) {
+							func.forEach(function(fn) {
+								doneList.push(fn)
+							})
+						};
+					},
+					fail: function(func) {
+						if(typeof func === 'function') {
+							failList.push(func)
+						};
+						if(func instanceof Array) {
+							func.forEach(function(fn) {
+								failList.push(fn)
+							})
+						};
+					},
+					progress:function(func) {
+						if(typeof func === 'function') {
+							progressList.push(func)
+						};
+						if(func instanceof Array) {
+							func.forEach(function(fn) {
+								progressList.push(fn)
+							})
+						};
+					},
+					resolve: function(arg) {
+						if(status === 'pending') {
+							doneList.forEach(function(fn) {
+								fn(arg)
+							});
+							doneList.length = 0;
+							status = 'resolve';
+						}
+						return this;
+					},
+					reject: function(arg) {
+						if(status === 'pending') {
+							failList.forEach(function(fn) {
+								fn(arg)
+							});
+							failList.length = 0;
+							status = 'reject';
+						}
+						return this;
+					},
+					notify: function(arg) {
+						if(status === 'pending') {
+							progressList.forEach(function(fn) {
+								fn(arg)
+							});
+							progressList.length = 0;
+						}
+						return this;
+					},
+					then:function(resolveFunc,rejectFunc,progressFunc){
+						this.done(resolveFunc).fail(rejectFunc).progress(progressFunc);
+					},
+					promise:function(){
+						return {
+							done:this.done,
+							fail:this.fail,
+							progress:this.progress,
+							then:this.then
+						}
+					}
+				}
+				
+				return deffered;
+			}
+		</script>
+	</body>
+
+</html>

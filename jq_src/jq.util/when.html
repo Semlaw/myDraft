@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				console.log('func use1')
+			});
+			document.addEventListener('DOMContentLoaded',function(){
+				console.log('DOMcontentLoaded')
+			});
+			document.addEventListener('load',function(){
+				console.log('load')
+			});
+			$(function(){
+				console.log('func use2')
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+			hello world
+		</div>
+		<script type="text/javascript">
+			var d1 = $.Deferred();
+			var d2 = $.Deferred();
+			d1.resolve('d1 resolve')
+			setTimeout(function(){
+				d2.resolve('d2 resolve')
+			},4000)
+			$.when(d2,d1).then(function(res){
+				console.dir(arguments)
+				console.dir(res)
+				console.log('done')
+			},function(res){
+				console.dir(res)
+				console.log('fail')
+			})
+			
+		</script>
+	</body>
+</html>

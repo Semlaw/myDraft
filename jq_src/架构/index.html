@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<script type="text/javascript">
+			(function() {
+
+				var $ = (function() {
+					function $(sel) {
+						return new $.fn.init(sel)
+					};
+					$.fn = $.prototype;
+
+					$.fn.init = function(sel) {
+						var list = document.querySelectorAll(sel)
+						for(let i = 0, l = list.length; i < l; i++) {
+							this[i] = list[i]
+						}
+						this.length = list.length
+						this.selector = sel
+					};
+
+					$.fn.init.prototype = $.prototype;
+					return $ ;
+				})()
+
+				$.fn.each = function(func) {
+					var length = this.length
+					for(let i = 0, l = this.length; i < l; i++) {
+						func.call(this[i], [].slice.call(arguments, 1))
+					}
+				}
+
+				$.fn.html = function(txt) {
+					if(txt) {
+
+						this.each(function func(val) {
+							this.innerHTML = val
+						}, txt);
+						return this;
+					} else {
+						if(this[0]) {
+							return this[0].innerHTML;
+						} else {
+							return;
+						}
+					}
+				}
+
+				$.fn.css = function() {
+
+				}
+
+				window.$ = window.jQuery = $
+			})()
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="../jQuery3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//			$.get('localhost:8020/main.html')
+			function bar() {
+				$.ajax({
+					url: 'somedata.js', //跨域的dns/document!searchJSONResult.action,
+					type: "GET",
+					dataType: 'jsonp',
+					jsonpCallback: 'fuyonggang',
+					jsonp: 'callback',
+					data: {
+						code: 'utf-8',
+						q: '手机'
+					},
+					success: function(json) { //客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+						console.log(json)
+					},
+					error: function(xhr) {
+						//jsonp 方式此方法不被触发.原因可能是dataType如果指定为jsonp的话,就已经不是ajax事件了
+						//请求出错处理
+					}
+				});
+			}
+
+			function foo() {
+				$.ajax({
+					url: 'http://suggest.taobao.com/sug', //跨域的dns/document!searchJSONResult.action,
+					type: "GET",
+					dataType: 'jsonp',
+					//					jsonpCallback:'fuyonggang',
+					jsonp: 'callback',
+					data: {
+						code: 'utf-8',
+						q: '手机'
+					},
+					success: function(json) { //客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+						console.log(json)
+					},
+					error: function(xhr) {
+						//jsonp 方式此方法不被触发.原因可能是dataType如果指定为jsonp的话,就已经不是ajax事件了
+						//请求出错处理
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

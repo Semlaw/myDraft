@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div>hello world</div>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('div')
+					.queue('test',function(next,hooks) {
+						console.log('excute')
+						hooks.say = 'hello';
+						console.dir(hooks)
+//						next();	
+					})
+					.delay(3001,'test')
+					.queue('test',function(next,hooks){
+						console.dir(hooks)
+//						next();
+					})
+					.dequeue('test')
+					.promise('test')
+					.done(function(){
+						console.log('done')
+						console.dir(arguments)
+					})
+					
+			})
+			
+//			if (( tmp = jQuery.data( elements[ i ], deferDataKey, undefined, true ) ||
+//					( jQuery.data( elements[ i ], queueDataKey, undefined, true ) ||
+//						jQuery.data( elements[ i ], markDataKey, undefined, true ) ) &&
+//					jQuery.data( elements[ i ], deferDataKey, jQuery.Callbacks( "once memory" ), true ) )) {
+//				count++;
+//				tmp.add( resolve );
+//			}
+			
+			if (( tmp = 1 ||( 2 ||3 ) &&4 )) {
+				count++;
+				tmp.add( resolve );
+			}
+		</script>
+	</body>
+
+</html>

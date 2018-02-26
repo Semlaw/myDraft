@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>head</div>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('div')
+				.queue('test',function(next){
+					setTimeout(function(){
+						console.log(new Date)
+						console.log('first')
+						next()
+					},1000)
+				})
+				.delay(2000,'test')
+				.queue('test',function(next){
+					console.log(new Date)
+					console.log('second')
+				})
+			var obj = {};
+			$(obj)
+				.queue('confirm',function(next){
+					if(confirm('确认?')) next();
+					else alert('已取消')
+				})
+				.queue('confirm',function(next){
+					if(confirm('再次确认?')) next();
+					else alert('已取消')
+				})
+				.queue('confirm',function(next){
+					alert('完成')
+				})
+				
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div>hello world</div>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('div')
+					
+					.queue('test',function(next,hooks) {
+						console.log('excute')
+						hooks.say = 'hello';
+						console.dir(hooks)
+						next();	
+					})
+					.delay(30001,'test')
+					.queue('test',function(next,hooks){
+						console.dir(hooks)
+					})
+					.queue(function(){
+						
+					})
+					.dequeue('test')
+			})
+		</script>
+	</body>
+
+</html>

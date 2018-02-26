@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<code>200</code>
+	<msg>请求操作API成功</msg>
+	<result>
+		<dver>6.5.8</dver>
+		<flag>0</flag>
+		<isExpire>false</isExpire>
+		<accessToken>3266d94c-d586-4ba3-94d5-09c97c63d49a</accessToken>
+		<account>main</account>
+	</result>
+	

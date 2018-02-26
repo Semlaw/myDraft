@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var def1 = $.Deferred();
+			var def2 = $.Deferred();
+			def1.then(function() {
+				console.log(arguments);
+			})
+			setTimeout(function() {
+				def1.resolve(1)
+				def2.resolve('a', 'b', 'c')
+			}, 1000)
+			$.when(def1, def2, {
+					name: 123
+				})
+				.then(function(res) {
+					console.log(arguments)
+				})
+		</script>
+	</body>
+
+</html>

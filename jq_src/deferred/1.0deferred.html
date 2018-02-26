@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var def = $.Deferred(function(def){
+				console.log(arguments)
+				setTimeout(function(){
+					def.resolve('fisrt')
+				},2000)
+			}).then(function(data){
+				console.log(('then1'))
+				console.log(data)
+				return $.Deferred(function(def){
+					setTimeout(function(){
+						def.resolve(1)
+					},1000)
+				})
+			}).then(function(data){
+				console.log(('then2'))
+				console.log(data)
+				return $.Deferred(function(def){
+					setTimeout(function(){
+						def.resolve(2)
+					},2000)
+				})
+			}).then(function(data){
+				console.log(('then3'))
+				console.log(data)
+				return $.Deferred(function(def){
+					setTimeout(function(){
+						def.resolve(3)
+					},3000)
+				})
+			})
+			
+		</script>
+	</body>
+</html>

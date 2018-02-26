@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function jsonp(options) {
+				var url, data, callbackName, success, script, queryString, arr = [];
+				url = options.url;
+				data = options.data || {};
+				callbackName = options.callbackName || '_jsonpCallback' + (+new Date);
+				success = options.success;
+
+				window[callbackName] = function(jsonData) {
+					delete window[callbackName];
+					script&&script.remove();
+					success(jsonData);
+				}
+				data.callback = callbackName;
+				for(var k in data) {
+					arr.push(k + '=' + data[k]);
+				}
+				queryString = arr.join('&');
+				script = document.createElement('script');
+				document.body.append(script);
+				script.src = url + '?' + queryString;
+			}
+
+			function apply() {
+				jsonp({
+					url: 'http://suggest.taobao.com/sug',
+					data: {
+						code: 'utf-8',
+						q: '手机'
+					},
+					success:function(data){
+						console.log(data)
+					}
+				})
+			}
+		</script>
+	</body>
+
+</html>

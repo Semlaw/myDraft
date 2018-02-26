@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="callbacks.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var cb = Callbacks('memory')
+			var flag = true;
+
+			function foo() {
+				console.log('foo');
+			}
+
+			function bar() {
+				console.log('bar');
+			}
+//			cb.lock();
+			cb.add(foo);
+		</script>
+	</body>
+
+</html>

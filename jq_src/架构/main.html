@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<span>index1</span>
+			<span>index2</span>
+			<span>index3</span>
+			<span>index4</span>
+		</div>
+		<div>1</div>
+		<div>2</div>
+		<div class="c1">
+			<div class="c2">
+				<div class="c3"></div>
+			</div>
+		</div>
+		<script src="../jquery1.7.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var de = $.Deferred();
+			var p  = Promise.resolve(de).then(function(data){
+				console.info('then',data)
+			}).catch(function(data){
+				console.info('catch',data)
+			})
+		</script>
+	</body>
+</html>
