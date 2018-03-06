@@ -73,9 +73,9 @@ angular.module('editServiceModule', [])
 						ev.preventDefault()
 						var br = document.createElement('br');
 						var ran = getSelection().getRangeAt(0);
-						ran.deleteContents()
-						ran.insertNode(br)
-						ran.setStartAfter(br)
+						ran.deleteContents();
+						ran.insertNode(br);
+						ran.setStartAfter(br);
 					}
 				})
 

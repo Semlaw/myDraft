@@ -30,6 +30,6 @@ angular
 		$scope.selectedOption = null;
 
 		$scope.onSelect = function(option) {
-			console.log('this.onSelect')
+			console.log('this.onSelect',option)
 		};
 	});

@@ -80,6 +80,7 @@ angular.module('myVirtualList', [])
 				scope.onClickOption = function(option) {
 					ngModelCtrl.$setViewValue(option);
 					scope.currentOption = option;
+					console.dir(scope.uiOnSelect);
 					scope.uiOnSelect({
 						"option": option
 					});

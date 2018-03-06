@@ -23,10 +23,29 @@
 					// 添加到文档中
 					$dom.appendTo('body');
 				})
+				.controller('AController', function($scope) {
+					console.log($scope);
+					$scope.age = 1212;
+				});
 		</script>
 	</head>
 
-	<body ng-controller="MyController as appCtrl">
+	<body ng-app="myApp">
+
+		<script type="text/javascript">
+			function test() {
+				var $div = $('<div ng-controller="AController">{{age}}</div>');
+				$(document.body).append($div);
+
+				angular.element(document).injector().invoke(function($compile) {
+
+					var scope = angular.element($div).scope();
+					console.log(scope)
+					$compile($div)(scope);
+
+				});
+			}
+		</script>
 	</body>
 
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div ng-controller="myController"></div>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			angular.module('app', [])
+				.config(function($provide) {
+					$provide.value('movieTitle', '功夫瑜伽7')
+
+					$provide.decorator('movieTitle', function($delegate) {
+						return $delegate + ' - 测试'
+					})
+				})
+				.controller('myController', function(movieTitle) {
+					console.log('movieTitle: ', movieTitle);
+				})
+		</script>
+	</body>
+
+</html>
