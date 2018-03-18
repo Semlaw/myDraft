@@ -16,14 +16,14 @@
 			var btn = document.getElementById('btn');
 			btn.addEventListener('click', function() {
 				var inputText = document.getElementById('inputText');
-				var img = document.getElementById('img')
-				console.dir(img.value)
-				var currentFocus = document.activeElement;
-				console.dir(currentFocus)
+//				var img = document.getElementById('img')
+//				console.dir(img.value)
+//				var currentFocus = document.activeElement;
+//				console.dir(currentFocus)
 				inputText.focus();
-				inputText.setSelectionRange(0, inputText.value.length);
+				inputText.setSelectionRange(1, inputText.value.length);
 				var bol =  document.execCommand('copy', true);
-				currentFocus.focus();
+//				currentFocus.focus();
 				console.log(bol)
 			});
 		</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>angular</title>
+		<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/angular.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+
+	<body>
+
+		<div>
+			<div ng-controller="MyController">
+				<div>{{childName}}</div>
+				<div ng-repeat='(k,item) in getList()'>
+					<p>{{item.val}}</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			angular.module('myApp', [])
+				.controller('MyController', function($scope, $compile, $rootScope) {
+					$scope.childName = 'old'
+					$rootScope.rootName = 'oldRoot'
+					$scope.list = ['first','second','third']
+					$scope.getList = function(){
+						console.log('getList')
+						return [{val:'first'},{val:'second'},{val:'third'}]
+						return  ['first','second','third',Date.now()]
+					}
+				})
+		</script>
+		<script type="text/javascript">
+			function test(){
+				
+			}
+		</script>
+	</body>
+
+</html>

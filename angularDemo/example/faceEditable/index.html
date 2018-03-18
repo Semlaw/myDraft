@@ -8,18 +8,21 @@
 			.edit-area {
 				min-height: 50px;
 			}
-			.pull-left{
+			
+			.pull-left {
 				float: left;
 			}
-			.wrapper{
+			
+			.wrapper {
 				width: 500px;
 				margin: 20px auto;
 			}
-			.edit-area{
+			
+			.edit-area {
 				background-color: #ececec;
 			}
 		</style>
-		<link rel="stylesheet" type="text/css" href="http://chat.51zan.com/css/expression.css"/>
+		<link rel="stylesheet" type="text/css" href="http://chat.51zan.com/css/expression.css" />
 	</head>
 
 	<body ng-app="app" ng-controller="appCtrl">
@@ -29,19 +32,19 @@
 				<div contenteditable class="edit-area" max-model-length="100" face-editable ng-model="dataModel"></div>
 				<div style="margin-bottom: 5px;" class="word-number-count">
 					<span title="表情" class="qqface-btn">表情按钮</span>
-					
+
 					<span ng-bind="dataModel.length"></span>/<span>100</span>
 				</div>
 				<div style="margin: 20px 0; ">
 					<h3>model值</h3>
 					<div ng-bind="dataModel"></div>
 				</div>
-				
+
 			</div>
 			<div contenteditable="" class="edit-area">
-				
+
 			</div>
-			
+
 		</div>
 		<div style="display: none;" class="facebox">
 			<div class="qq_face">

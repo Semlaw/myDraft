@@ -35,7 +35,7 @@
 			// drag & drop
 			var ipt = document.querySelector('textarea');
 			ipt.ondragover = function() {
-				return false;
+//				return false;
 			};
 
 			// Add drop handler
@@ -44,6 +44,7 @@
 				e.preventDefault();
 				e = e || window.event;
 				var files = e.dataTransfer.files;
+				
 				var reader = new FileReader();
 
 				reader.onload = function() {
